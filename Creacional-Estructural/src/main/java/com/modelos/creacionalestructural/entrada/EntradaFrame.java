@@ -1,5 +1,7 @@
 package com.modelos.creacionalestructural.entrada;
+
 import javax.swing.*;
+import java.awt.*;
 
 public class EntradaFrame extends Entrada {
 
@@ -13,17 +15,27 @@ public class EntradaFrame extends Entrada {
     };
 
     @Override
-    public String capturar(){
+    public String capturar() {
         int indiceComida = eleccionComida();
 
         return foodOptions[indiceComida];
     }
 
-    public int eleccionComida(){
+    public int eleccionComida() {
         JComboBox<String> foodComboBox = new JComboBox<>(foodOptions);
+        foodComboBox.setFont(new Font("Arial", Font.PLAIN, 14)); // Mejora la fuente
 
         JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Mejora el diseño
+        panel.add(Box.createVerticalGlue()); // Centra verticalmente
         panel.add(foodComboBox);
+        panel.add(Box.createVerticalGlue()); // Centra verticalmente
+
+        // Mejora el diálogo
+        UIManager.put("OptionPane.background", Color.WHITE);
+        UIManager.put("Panel.background", Color.WHITE);
+        UIManager.put("OptionPane.messageFont", new Font("Arial", Font.PLAIN, 14));
+        UIManager.put("OptionPane.buttonFont", new Font("Arial", Font.PLAIN, 14));
 
         int result = JOptionPane.showConfirmDialog(
                 null,
