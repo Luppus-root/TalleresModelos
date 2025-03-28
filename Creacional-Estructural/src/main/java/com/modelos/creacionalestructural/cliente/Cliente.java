@@ -1,3 +1,9 @@
+package com.modelos.creacionalestructural.cliente;
+
+import com.modelos.creacionalestructural.Factory.EntradaSalidaFabricaAbstracta;
+import com.modelos.creacionalestructural.entrada.Entrada;
+import com.modelos.creacionalestructural.salida.Salida;
+
 public class Cliente {
     private final Entrada entrada;
     private final Salida salida;

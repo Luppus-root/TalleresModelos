@@ -1,3 +1,5 @@
+package com.modelos.creacionalestructural.salida;
+
 public class SalidaConsola extends Salida{
 
     @Override
