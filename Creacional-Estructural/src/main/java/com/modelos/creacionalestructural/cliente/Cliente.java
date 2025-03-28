@@ -13,8 +13,11 @@ public class Cliente {
         this.salida = factory.crearSalida();
     }
 
-    public void mostrarDatos() {
-
+    public void mostrarDatos(String mensaje) {
+        salida.mostrar(mensaje);
     }
 
+    public String capturarDatos() {
+        return entrada.capturar();
+    }
 }

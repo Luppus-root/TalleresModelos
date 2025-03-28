@@ -7,7 +7,7 @@ public class SalidaFrame extends Salida {
         @Override
         public void mostrar(String m) {
 
-        JOptionPane.showMessageDialog(null, m);
+        JOptionPane.showMessageDialog(null, "Combo seleccionado: " + m);
 
     }
 
