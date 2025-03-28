@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class EntradaConsola implements Entrada{
+public class EntradaConsola extends Entrada{
 
     private final Scanner scanner = new Scanner(System.in);
 

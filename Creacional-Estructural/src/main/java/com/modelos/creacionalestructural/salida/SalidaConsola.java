@@ -1,4 +1,4 @@
-public class SalidaConsola implements Salida{
+public class SalidaConsola extends Salida{
 
     @Override
     public void mostrar(String mensaje) {
