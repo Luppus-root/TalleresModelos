@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller; // Importa Controller
 
 @Controller // Cambia a Controller
-@RequestMapping("/salida")
 @Getter
 public class SalidaWeb extends Salida {
 
