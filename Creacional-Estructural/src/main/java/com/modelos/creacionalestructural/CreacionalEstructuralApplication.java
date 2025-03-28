@@ -37,6 +37,7 @@ public class CreacionalEstructuralApplication {
 		switch (inputMethodChoice) {
 			case 0: // Consola
 				factory = new FabricaEntradaSalidaConsola();
+
 				break;
 			case 1: // Ventana
 				factory = new FabricaEntradaSalidaFrame();

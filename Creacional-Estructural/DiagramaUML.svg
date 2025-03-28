@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="95cm" height="36cm" viewBox="52 49 1890 707" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="1286" y="328" width="258.1" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1286" y="328" width="258.1" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1415.05" y="343.2">&lt;&lt;Interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1415.05" y="364">EntradaSalidaFabricaAbstracta</text>
+    <rect style="fill: #ffffff" x="1286" y="372" width="258.1" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1286" y="372" width="258.1" height="8"/>
+    <rect style="fill: #ffffff" x="1286" y="380" width="258.1" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1286" y="380" width="258.1" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1289" y="393.2">+crearSalida(): Salida</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1289" y="409.2">+crearEntrada(): Entrada</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="802" y="336" width="231.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="802" y="336" width="231.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="917.75" y="356">FabricaEntradaSalidaFrame</text>
+    <rect style="fill: #ffffff" x="802" y="364" width="231.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="802" y="364" width="231.5" height="8"/>
+    <rect style="fill: #ffffff" x="802" y="372" width="231.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="802" y="372" width="231.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="805" y="385.2">+crearEntrada(): Entrada</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="805" y="401.2">+crearSalida(): Salida</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1295.9" y="683" width="244.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1295.9" y="683" width="244.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1418.07" y="703">FabricaEntradaSalidaConsola</text>
+    <rect style="fill: #ffffff" x="1295.9" y="711" width="244.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1295.9" y="711" width="244.35" height="8"/>
+    <rect style="fill: #ffffff" x="1295.9" y="719" width="244.35" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1295.9" y="719" width="244.35" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1298.9" y="732.2">+crearEntrada(): Entrada</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1298.9" y="748.2">+crearSalida(): Salida</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="912.9" y="116" width="216.95" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="912.9" y="116" width="216.95" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1021.38" y="136">FabricaEntradaSalidaWeb</text>
+    <rect style="fill: #ffffff" x="912.9" y="144" width="216.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="912.9" y="144" width="216.95" height="8"/>
+    <rect style="fill: #ffffff" x="912.9" y="152" width="216.95" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="912.9" y="152" width="216.95" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="915.9" y="165.2">+crearEntrada(): Entrada</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="915.9" y="181.2">+crearSalida(): Salida</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="114.972" y="297.622" width="156.3" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114.972" y="297.622" width="156.3" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="193.122" y="317.622">Entrada</text>
+    <rect style="fill: #ffffff" x="114.972" y="325.622" width="156.3" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114.972" y="325.622" width="156.3" height="8"/>
+    <rect style="fill: #ffffff" x="114.972" y="333.622" width="156.3" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114.972" y="333.622" width="156.3" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117.972" y="346.822">+capturar(): String</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="53.7015" y="533.082" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="53.7015" y="533.082" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="174.202" y="553.082">Salida</text>
+    <rect style="fill: #ffffff" x="53.7015" y="561.082" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="53.7015" y="561.082" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="53.7015" y="569.082" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="53.7015" y="569.082" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="56.7015" y="582.282">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="490" y="570" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="570" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="610.5" y="590">EntradaConsola</text>
+    <rect style="fill: #ffffff" x="490" y="598" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="598" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="490" y="606" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="606" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="493" y="619.2">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="482" y="293" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="482" y="293" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="602.5" y="313">EntradaFrame</text>
+    <rect style="fill: #ffffff" x="482" y="321" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="482" y="321" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="482" y="329" width="241" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="482" y="329" width="241" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="485" y="342.2">+eleccionComida(): Int</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="485" y="358.2">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="448.297" y="50.9727" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="448.297" y="50.9727" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="568.797" y="70.9727">EntradaWeb</text>
+    <rect style="fill: #ffffff" x="448.297" y="78.9727" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="448.297" y="78.9727" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="448.297" y="86.9727" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="448.297" y="86.9727" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="451.297" y="100.173">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="490" y="653" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="653" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="610.5" y="673">SalidaConsola</text>
+    <rect style="fill: #ffffff" x="490" y="681" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="681" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="490" y="689" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="490" y="689" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="493" y="702.2">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="516" y="408" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="516" y="408" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="636.5" y="428">SalidaFrame</text>
+    <rect style="fill: #ffffff" x="516" y="436" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="516" y="436" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="516" y="444" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="516" y="444" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="519" y="457.2">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="478.406" y="164.568" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="478.406" y="164.568" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="598.906" y="184.568">SalidaWeb</text>
+    <rect style="fill: #ffffff" x="478.406" y="192.568" width="241" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="478.406" y="192.568" width="241" height="8"/>
+    <rect style="fill: #ffffff" x="478.406" y="200.568" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="478.406" y="200.568" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="481.406" y="213.768">+mostrar(mensaje:String): void</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1266.76,372 1267.99,372 1035.51,372 1034.51,372 "/>
+    <polygon style="fill: #ffffff" points="1266.76,380 1282.76,372 1266.76,364 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1266.76,380 1282.76,372 1266.76,364 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1415.05,308.765 1415.05,236 1021.38,236 1021.38,189.006 "/>
+    <polygon style="fill: #ffffff" points="1407.05,308.765 1415.05,324.765 1423.05,308.765 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1407.05,308.765 1415.05,324.765 1423.05,308.765 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1415.05,435.242 1415.05,557.498 1418.07,557.498 1418.07,681.991 "/>
+    <polygon style="fill: #ffffff" points="1423.05,435.242 1415.05,419.242 1407.05,435.242 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1423.05,435.242 1415.05,419.242 1407.05,435.242 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="290.518,325.622 367.786,325.622 367.786,78.9727 447.29,78.9727 "/>
+    <polygon style="fill: #ffffff" points="290.518,317.622 274.518,325.622 290.518,333.622 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="290.518,317.622 274.518,325.622 290.518,333.622 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="313.945,561.082 394.554,561.082 394.554,192.568 477.398,192.568 "/>
+    <polygon style="fill: #ffffff" points="313.945,553.082 297.945,561.082 313.945,569.082 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="313.945,553.082 297.945,561.082 313.945,569.082 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="290.518,325.622 384.637,325.622 384.637,329 480.993,329 "/>
+    <polygon style="fill: #ffffff" points="290.518,317.622 274.518,325.622 290.518,333.622 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="290.518,317.622 274.518,325.622 290.518,333.622 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="174.202,513.839 174.202,490.541 636.5,490.541 636.5,465.007 "/>
+    <polygon style="fill: #ffffff" points="166.202,513.839 174.202,529.839 182.202,513.839 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="166.202,513.839 174.202,529.839 182.202,513.839 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="193.122,372.865 193.122,469.811 610.5,469.811 610.5,568.993 "/>
+    <polygon style="fill: #ffffff" points="201.122,372.865 193.122,356.865 185.122,372.865 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="201.122,372.865 193.122,356.865 185.122,372.865 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="174.202,608.3 174.202,734 610.5,734 610.5,709.997 "/>
+    <polygon style="fill: #ffffff" points="182.202,608.3 174.202,592.3 166.202,608.3 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="182.202,608.3 174.202,592.3 166.202,608.3 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="911.893,152 805.099,152 805.099,78.9727 697.01,78.9727 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="709.657,73.9727 693.657,78.9727 709.657,83.9727 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="911.893,152 820.153,152 820.153,192.568 727.118,192.568 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="739.766,187.568 723.766,192.568 739.766,197.568 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="800.993,372 766.5,372 766.5,329 730.713,329 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="743.36,324 727.36,329 743.36,334 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="800.993,372 783.5,372 783.5,436 764.713,436 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="777.36,431 761.36,436 777.36,441 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="1294.89,719 1015.45,719 1015.45,682 734.713,682 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="747.36,677 731.36,682 747.36,687 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1693.9" y="571" width="167.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1693.9" y="571" width="167.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1777.65" y="591">AdaptadorStringInt</text>
+    <rect style="fill: #ffffff" x="1693.9" y="599" width="167.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1693.9" y="599" width="167.5" height="8"/>
+    <rect style="fill: #ffffff" x="1693.9" y="607" width="167.5" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1693.9" y="607" width="167.5" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1696.9" y="620.2">+convertir(): Int</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1615.9" y="330" width="325.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1615.9" y="330" width="325.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1778.75" y="350">Cliente</text>
+    <rect style="fill: #ffffff" x="1615.9" y="358" width="325.7" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1615.9" y="358" width="325.7" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1618.9" y="371.2">-factory: EntradaSalidaFabricaAbstracta</text>
+    <rect style="fill: #ffffff" x="1615.9" y="378" width="325.7" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1615.9" y="378" width="325.7" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1618.9" y="391.2">+Cliente(f:EntradaSalidaFabricaAbstracta)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1618.9" y="407.2">+mostrarDatos()</text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1615.35" y1="378.346" x2="1556.73" y2="380.622"/>
+    <polygon style="fill: #000000" points="1549.24,380.913 1559.03,375.529 1556.73,380.622 1559.42,385.521 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1549.24,380.913 1559.03,375.529 1556.73,380.622 1559.42,385.521 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1692.9" y1="598.927" x2="744.24" y2="598.115"/>
+    <polygon style="fill: #ffffff" points="744.244,593.115 734.24,598.106 744.236,603.115 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="744.244,593.115 734.24,598.106 744.236,603.115 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x1="1778.54" y1="414.784" x2="1777.81" y2="565.529"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1772.85,557.741 1777.8,567.765 1782.85,557.79 "/>
+  </g>
+</svg>
