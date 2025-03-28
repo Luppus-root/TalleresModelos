@@ -1,4 +1,7 @@
 package com.modelos.creacionalestructural.entrada;
 
-public class Entrada {
+public abstract class Entrada {
+
+    public abstract String capturar();
+
 }
