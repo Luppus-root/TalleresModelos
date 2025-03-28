@@ -1,4 +1,4 @@
-package com.modelos.creacionalestructural.factory;
+package com.modelos.creacionalestructural.Factory;
 
 import com.modelos.creacionalestructural.entrada.Entrada;
 import com.modelos.creacionalestructural.entrada.EntradaWeb;
