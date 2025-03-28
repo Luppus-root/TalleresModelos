@@ -6,17 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 @RestController
 @RequestMapping("/entrada")
 public class EntradaWeb extends Entrada {
 
-    private Model model;
-
     @PostMapping("/capturar")
-    public void capturar(@RequestParam String m) {
+    public void capturar(@RequestParam String m, Model model) { // Model as a parameter
         model.addAttribute("mensaje", m);
     }
 
