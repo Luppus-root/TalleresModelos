@@ -1,10 +1,18 @@
 package com.modelos.creacionalestructural.entrada;
 
+import com.modelos.creacionalestructural.adapters.AdaptadorStringInt;
+
 import java.util.Scanner;
 
-public class EntradaConsola extends Entrada {
+public class EntradaConsola extends Entrada implements AdaptadorStringInt {
 
     private final Scanner scanner = new Scanner(System.in);
+
+    @Override
+    public int convertir(String s) {
+
+        return Integer.parseInt(s);
+    }
 
     @Override
     public String capturar() {
@@ -16,7 +24,7 @@ public class EntradaConsola extends Entrada {
         System.out.println("(5). Ensalada & Coca Cola");
         System.out.println("(6). Ensalada & Agua");
         System.out.println("Seleccione: ");
-        int seleccion = scanner.nextInt();
+        String seleccion = scanner.nextLine();
 
         String[] opciones = {
                 "Hamburguesa & Coca Cola",
@@ -27,6 +35,6 @@ public class EntradaConsola extends Entrada {
                 "Ensalada & Agua"
         };
 
-        return opciones[seleccion-1];
+        return opciones[this.convertir(seleccion)-1];
     }
 }
