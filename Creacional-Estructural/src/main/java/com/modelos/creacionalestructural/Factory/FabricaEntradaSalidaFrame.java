@@ -1,12 +1,22 @@
 package com.modelos.creacionalestructural.Factory;
 
 import com.modelos.creacionalestructural.entrada.Entrada;
+import com.modelos.creacionalestructural.entrada.EntradaFrame;
 import com.modelos.creacionalestructural.salida.Salida;
+import com.modelos.creacionalestructural.salida.SalidaFrame;
 
-public interface FabricaEntradaSalidaFrame {
+public class FabricaEntradaSalidaFrame implements EntradaSalidaFabricaAbstracta{
 
-    public Entrada crear_entrada();
-    public Salida crear_salida();
+    public Entrada crearEntrada(){
+        return new EntradaFrame();
+    }
+
+    public Salida crearSalida(){
+        return new SalidaFrame();
+    }
+
+    public FabricaEntradaSalidaFrame() {
+    }
 
 
 }
