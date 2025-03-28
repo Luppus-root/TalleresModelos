@@ -8,6 +8,7 @@ public class CreacionalEstructuralApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CreacionalEstructuralApplication.class, args);
+
 	}
 
 }

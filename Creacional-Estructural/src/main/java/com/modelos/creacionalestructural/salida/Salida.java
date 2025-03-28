@@ -1,4 +1,6 @@
 package com.modelos.creacionalestructural.salida;
 
-public class Salida {
+public abstract class Salida {
+
+    public abstract void mostrar(String m);
 }
