@@ -9,7 +9,7 @@ import com.modelos.creacionalestructural.salida.SalidaFrame;
 public class FabricaEntradaSalidaFrame implements EntradaSalidaFabricaAbstracta{
 
     public Entrada crearEntrada(){
-        return new AdapterStringInt();
+        return new EntradaFrame();
     }
 
     public Salida crearSalida(){

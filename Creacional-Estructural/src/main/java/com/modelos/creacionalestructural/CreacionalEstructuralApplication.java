@@ -55,7 +55,5 @@ public class CreacionalEstructuralApplication {
 		String mensaje = cliente.capturarDatos();
 		cliente.mostrarDatos(mensaje);
 
-		// NO SIRVE
-		SpringApplication.run(CreacionalEstructuralApplication.class, args);
 	}
 }
