@@ -1,7 +1,6 @@
 package com.modelos.creacionalestructural.entrada;
 
 import com.modelos.creacionalestructural.adapters.AdapterStringInt;
-import com.modelos.creacionalestructural.adapters.InterfaceStringInt;
 
 import java.util.Scanner;
 
