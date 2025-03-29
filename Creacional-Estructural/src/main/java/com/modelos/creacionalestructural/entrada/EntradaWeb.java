@@ -19,6 +19,8 @@ public class EntradaWeb extends Entrada {
 
     @Override
     public String capturar() {
+        SpringApplication.run(CreacionalEstructuralApplication.class);
+
         return "";
 
     }
