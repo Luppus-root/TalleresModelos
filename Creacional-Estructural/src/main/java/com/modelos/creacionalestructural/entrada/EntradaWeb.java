@@ -1,5 +1,7 @@
 package com.modelos.creacionalestructural.entrada;
 
+import com.modelos.creacionalestructural.CreacionalEstructuralApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,5 +20,6 @@ public class EntradaWeb extends Entrada {
     @Override
     public String capturar() {
         return "";
+
     }
 }
