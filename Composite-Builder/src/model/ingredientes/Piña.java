@@ -2,7 +2,7 @@ package model.ingredientes;
 
 import model.base.Comida;
 
-public class Piña extends Comida {
+public class Piña implements Comida {
 
     private String nombre;
     private double precioUnitario;
