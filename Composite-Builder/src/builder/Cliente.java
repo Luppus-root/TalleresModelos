@@ -7,42 +7,35 @@ public class Cliente {
         this.chef = chef;
     }
 
-    public String ordenarPizzaEstandar() {
-        chef.agregarMasa("Delgada", 3.5);
-        chef.agregarQueso("Mozzarella", 2.5);
-        chef.agregarTomate("Roma", 1.5);
-        chef.agregarSalsaTomate("Roma", 0.3);
-        chef.agregarPollo("Asado", 4.5);
-        chef.agregarPiña("Dulce", 2.0);
-
-        return chef.crearComida();
+    public void setChef(Chef chef) {
+        this.chef = chef;
     }
 
-    public String ordenarPizzaEspecial() {
-        chef.agregarMasa("Gruesa", 4.5);
-        chef.agregarQueso("Cheddar", 3.5);
-        chef.agregarTomate("Cherry", 2.5);
-        chef.agregarSalsaTomate("Cherry", 0.5);
-        chef.agregarPollo("Marinado", 5.5);
-        chef.agregarPiña("Extra dulce", 3.0);
-
-        return chef.crearComida();
+    public Object construirPizzaHawaiana(String nombreMasa, double precioMasa,
+                                         String nombreQueso, double precioQueso,
+                                         String nombrePiña, double precioPiña,
+                                         String nombreTomate, double precioTomate,
+                                         double cantidadTomate) {
+        chef.crearComida();
+        chef.agregarMasa(nombreMasa, precioMasa);
+        chef.agregarQueso(nombreQueso, precioQueso);
+        chef.agregarPiña(nombrePiña, precioPiña);
+        chef.agregarTomate(nombreTomate, precioTomate);
+        chef.agregarSalsaTomate(nombreTomate, cantidadTomate);
+        return chef.finalizarComida();
     }
 
-
-    public String ordenarPizzaPersonalizada(String tipoMasa, double precioMasa,
-                                            String tipoQueso, double precioQueso,
-                                            String tipoTomate, double precioTomate,
-                                            double cantidadTomate,
-                                            String tipoPollo, double precioPollo,
-                                            String tipoPiña, double precioPiña) {
-        chef.agregarMasa(tipoMasa, precioMasa);
-        chef.agregarQueso(tipoQueso, precioQueso);
-        chef.agregarTomate(tipoTomate, precioTomate);
-        chef.agregarSalsaTomate(tipoTomate, cantidadTomate);
-        chef.agregarPollo(tipoPollo, precioPollo);
-        chef.agregarPiña(tipoPiña, precioPiña);
-
-        return chef.crearComida();
+    public Object construirPizzaPollo(String nombreMasa, double precioMasa,
+                                      String nombreQueso, double precioQueso,
+                                      String nombrePollo, double precioPollo,
+                                      String nombreTomate, double precioTomate,
+                                      double cantidadTomate) {
+        chef.crearComida();
+        chef.agregarMasa(nombreMasa, precioMasa);
+        chef.agregarQueso(nombreQueso, precioQueso);
+        chef.agregarPollo(nombrePollo, precioPollo);
+        chef.agregarTomate(nombreTomate, precioTomate);
+        chef.agregarSalsaTomate(nombreTomate, cantidadTomate);
+        return chef.finalizarComida();
     }
 }

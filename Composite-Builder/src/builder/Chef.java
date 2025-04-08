@@ -1,11 +1,7 @@
 package builder;
 
 public interface Chef {
-    String crearComida();
-
-    public void agregarPollo(String nombre, double precio);
-
-    public void agregarPiña(String nombre, double precio);
+    public void crearComida();
 
     public void agregarMasa(String nombre, double precio);
 
@@ -14,4 +10,10 @@ public interface Chef {
     public void agregarTomate(String nombre, double precio);
 
     public void agregarSalsaTomate(String tomate, double cantidadTomate);
+
+    public Object finalizarComida();
+
+    public void agregarPiña(String nombrePiña, double precioPiña);
+
+    public void agregarPollo(String nombrePollo, double precioPollo);
 }
