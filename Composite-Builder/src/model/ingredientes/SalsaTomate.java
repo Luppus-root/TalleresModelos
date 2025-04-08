@@ -2,7 +2,7 @@ package model.ingredientes;
 
 import model.base.Comida;
 
-public class SalsaTomate extends Comida {
+public class SalsaTomate implements Comida {
 
     private Tomate tomate;
     private double cantidadTomate;

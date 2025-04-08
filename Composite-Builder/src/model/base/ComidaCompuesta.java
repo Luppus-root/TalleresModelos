@@ -1,6 +1,6 @@
 package model.base;
 
-public class ComidaCompuesta extends Comida {
+public class ComidaCompuesta implements Comida {
 
     protected Comida[] children;
 

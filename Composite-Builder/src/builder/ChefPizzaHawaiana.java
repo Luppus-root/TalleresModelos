@@ -8,7 +8,7 @@ import model.ingredientes.SalsaTomate;
 import model.ingredientes.Tomate;
 import model.pizzas.PizzaHawaiana;
 
-public class ChefPizzaHawaiana extends Chef {
+public class ChefPizzaHawaiana implements Chef {
 
     private PizzaHawaiana pizzaHawaiana;
     private Tomate tomate;
