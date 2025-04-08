@@ -20,7 +20,6 @@ public abstract class Pizza extends ComidaCompuesta implements PizzaClonable {
     }
 
     public String getDescripcion() {
-        return "\nIngredientes:\n" + super.getDescripcion() +
-                "Precio total: $" + getPrecioUnitario();
+        return "\nIngredientes:\n" + super.getDescripcion();
     }
 }

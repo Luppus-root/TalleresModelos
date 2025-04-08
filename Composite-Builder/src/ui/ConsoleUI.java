@@ -112,7 +112,6 @@ public class ConsoleUI {
         );
 
         System.out.println(pizzaHawaiana.getDescripcion());
-        System.out.println("💰 Precio total: $" + pizzaHawaiana.getPrecioUnitario());
     }
 
     private static void crearPizzaPollo() {
@@ -133,7 +132,6 @@ public class ConsoleUI {
         );
 
         System.out.println(pizzaPollo.getDescripcion());
-        System.out.println("💰 Precio total: $" + pizzaPollo.getPrecioUnitario());
     }
 
     private static void clonarPizzaHawaiana() {
