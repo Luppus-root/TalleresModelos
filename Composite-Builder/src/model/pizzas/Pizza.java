@@ -18,7 +18,7 @@ public abstract class Pizza extends ComidaCompuesta implements PizzaClonable {
 
     @Override
     public String getDescripcion() {
-        return "Pizza con: " + super.getDescripcion();
+        return " con: " + super.getDescripcion();
     }
 
     @Override

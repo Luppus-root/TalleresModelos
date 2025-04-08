@@ -32,11 +32,11 @@ public class PizzaPollo extends Pizza {
 
     @Override
     public String getDescripcion() {
-        return "Pizza de Pollo con: " + super.getDescripcion();
+        return "Pizza de Pollo" + super.getDescripcion();
     }
 
     @Override
-    public PizzaClonable clonar() {
+    public PizzaPollo clonar() {
         PizzaPollo clone = new PizzaPollo();
         clone.setTomate(this.tomate);
         clone.setSalsaTomate(this.salsaTomate);

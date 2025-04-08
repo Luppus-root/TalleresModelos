@@ -35,7 +35,7 @@ public class PizzaApplication {
         );
         System.out.println(pizzaPollo.getDescripcion());
 
-        /*
+        /*+
         // Usando el patrón Prototype para clonar pizzas
         System.out.println("\nClonando la Pizza Hawaiana:");
         PizzaClonable pizzaHawaianaClon = pizzaHawaiana.clonar();
