@@ -36,6 +36,11 @@ public class PizzaPollo extends Pizza {
     }
 
     @Override
+    public double getPrecioUnitario() {
+        return 0;
+    }
+
+    @Override
     public PizzaClonable clonar() {
         PizzaPollo clone = new PizzaPollo();
         clone.setTomate(this.tomate);

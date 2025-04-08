@@ -1,26 +1,26 @@
 package model.pizzas;
 
+import model.base.Comida;
 import model.base.ComidaCompuesta;
 import model.base.PizzaClonable;
-import model.ingredientes.Masa;
-import model.ingredientes.Queso;
-import model.ingredientes.SalsaTomate;
-import model.ingredientes.Tomate;
+import model.ingredientes.*;
 
 public abstract class Pizza extends ComidaCompuesta implements PizzaClonable {
     public Tomate tomate;
     protected SalsaTomate salsaTomate;
     protected Queso queso;
     protected Masa masa;
+
     public Pizza() {
         super();
     }
 
-    @Override
-    public String getDescripcion() {
-        return " con: " + super.getDescripcion();
+    public void agregar(Comida ingrediente) {
+        agregarComponente(ingrediente);
     }
 
-    @Override
-    public abstract PizzaClonable clonar();
+    public String getDescripcion() {
+        return "\nIngredientes:\n" + super.getDescripcion() +
+                "Precio total: $" + getPrecioUnitario();
+    }
 }

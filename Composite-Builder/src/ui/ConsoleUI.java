@@ -70,30 +70,70 @@ public class ConsoleUI {
         return scanner.nextInt();
     }
 
+    private static double getDoubleInput(String prompt) {
+        System.out.print(prompt);
+        while (!scanner.hasNextDouble()) {
+            System.out.print("Entrada no válida. Intente con un número: ");
+            scanner.next();
+        }
+        return scanner.nextDouble();
+    }
+
+    private static String seleccionarOpcion(String tipo, String[] opciones) {
+        System.out.println("Seleccione tipo de " + tipo + ":");
+        for (int i = 0; i < opciones.length; i++) {
+            System.out.println((i + 1) + ". " + opciones[i]);
+        }
+
+        int seleccion = getUserInput("Opción: ");
+        while (seleccion < 1 || seleccion > opciones.length) {
+            System.out.print("Opción inválida. Intente nuevamente: ");
+            seleccion = getUserInput("");
+        }
+
+        return opciones[seleccion - 1];
+    }
+
     private static void crearPizzaHawaiana() {
         System.out.println("\n--- Creando Pizza Hawaiana ---");
         cliente.setChef(chefHawaiana);
+
+        String masa = seleccionarOpcion("masa", new String[]{"Integral", "Clásica"});
+        String queso = seleccionarOpcion("queso", new String[]{"Mozzarella", "Cheddar"});
+        String piña = seleccionarOpcion("piña", new String[]{"Natural", "Enlatada"});
+        String tomate = seleccionarOpcion("tomate", new String[]{"Cherry", "Roma"});
+
         pizzaHawaiana = (PizzaHawaiana) cliente.construirPizzaHawaiana(
-                "integral", 5.0,
-                "mozzarella", 3.0,
-                "dulce", 2.5,
-                "cherry", 1.8,
+                masa, 5.0,
+                queso, 3.0,
+                piña, 2.5,
+                tomate, 1.8,
                 2.0
         );
+
         System.out.println(pizzaHawaiana.getDescripcion());
+        System.out.println("💰 Precio total: $" + pizzaHawaiana.getPrecioUnitario());
     }
 
     private static void crearPizzaPollo() {
         System.out.println("\n--- Creando Pizza de Pollo ---");
         cliente.setChef(chefPollo);
+
+        String masa = seleccionarOpcion("masa", new String[]{"Normal", "Fina"});
+        String queso = seleccionarOpcion("queso", new String[]{"Cheddar", "Mozzarella"});
+        String pollo = seleccionarOpcion("pollo", new String[]{"Desmenuzado", "Tiras"});
+        String tomate = seleccionarOpcion("tomate", new String[]{"Cherry", "Roma"});
+
         pizzaPollo = (PizzaPollo) cliente.construirPizzaPollo(
-                "normal", 4.0,
-                "cheddar", 3.5,
-                "desmenuzado", 4.5,
-                "italiano", 2.0,
+                masa, 4.0,
+                queso, 3.5,
+                pollo, 4.5,
+                tomate, 2.0,
                 1.5
         );
+
         System.out.println(pizzaPollo.getDescripcion());
+        System.out.println("💰 Precio total: $" + pizzaPollo.getPrecioUnitario());
     }
 
     private static void clonarPizzaHawaiana() {

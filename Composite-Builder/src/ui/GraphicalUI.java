@@ -1,157 +1,125 @@
 package ui;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-import builder.*;
+import model.base.Comida;
+import model.ingredientes.*;
 import model.pizzas.*;
-import model.base.PizzaClonable;
 
 public class GraphicalUI {
+
     private static JTextArea outputArea;
-    private static Chef chefHawaiana;
-    private static Chef chefPollo;
-    private static Cliente cliente;
-    private static PizzaHawaiana pizzaHawaiana;
-    private static PizzaPollo pizzaPollo;
-    private static PizzaClonable pizzaHawaianaClon;
-    private static PizzaClonable pizzaPolloClon;
+    private static JComboBox<String> tipoPizzaCombo;
+    private static List<JCheckBox> checkBoxesIngredientes = new ArrayList<>();
+    private static final Comida[] INGREDIENTES = {
+            new Masa("Integral", 5.0),
+            new Masa("Normal", 4.0),
+            new Queso("Mozzarella", 3.0),
+            new Queso("Cheddar", 3.5),
+            new SalsaTomate(new Tomate("Dulce", 1.5), 2.5),
+            new SalsaTomate(new Tomate("Italiana", 1.8), 2.0),
+            new Piña("Cherry", 1.8),
+            new Tomate("Fresco", 1.5),
+            new Pollo("Desmenuzado", 4.5)
+    };
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            createAndShowGUI();
-        });
+        SwingUtilities.invokeLater(GraphicalUI::createAndShowGUI);
     }
 
     private static void createAndShowGUI() {
-        chefHawaiana = new ChefPizzaHawaiana();
-        chefPollo = new ChefPizzaPollo();
-        cliente = new Cliente(chefHawaiana);
-
-        JFrame frame = new JFrame("Aplicación de Pizzas - Interfaz Gráfica");
+        JFrame frame = new JFrame("🍕 Creador de Pizzas");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(750, 550);
+        frame.setSize(800, 650);
         frame.setLayout(new BorderLayout(10, 10));
-        frame.getContentPane().setBackground(new Color(250, 250, 255));
+        frame.getContentPane().setBackground(new Color(255, 245, 235)); // Color de fondo suave
 
-        // Panel de botones
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 2, 12, 12));
-        buttonPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 10, 15));
-        buttonPanel.setBackground(new Color(250, 250, 255));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        topPanel.setBorder(BorderFactory.createTitledBorder("Tipo de pizza"));
+        topPanel.setBackground(new Color(255, 245, 235));
+        tipoPizzaCombo = new JComboBox<>(new String[]{"Hawaiana", "Pollo"});
+        tipoPizzaCombo.setPreferredSize(new Dimension(200, 30));
+        topPanel.add(tipoPizzaCombo);
 
-        JButton crearHawaianaBtn = new JButton("Crear Pizza Hawaiana");
-        JButton crearPolloBtn = new JButton("Crear Pizza de Pollo");
-        JButton clonarHawaianaBtn = new JButton("Clonar Pizza Hawaiana");
-        JButton clonarPolloBtn = new JButton("Clonar Pizza de Pollo");
-        JButton compararBtn = new JButton("Comparar Instancias");
-        JButton limpiarBtn = new JButton("Limpiar Salida");
-
-        Dimension buttonSize = new Dimension(180, 40);
-        Font buttonFont = new Font("Segoe UI", Font.PLAIN, 15);
-
-        for (JButton button : new JButton[]{crearHawaianaBtn, crearPolloBtn, clonarHawaianaBtn, clonarPolloBtn, compararBtn, limpiarBtn}) {
-            button.setPreferredSize(buttonSize);
-            button.setBackground(new Color(220, 230, 241));
-            button.setForeground(new Color(40, 40, 40));
-            button.setFont(buttonFont);
-            button.setFocusPainted(false);
-            button.setBorder(BorderFactory.createLineBorder(new Color(180, 180, 200)));
-            button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            buttonPanel.add(button);
+        JPanel ingredientesPanel = new JPanel(new GridLayout(0, 2, 10, 10)); // Espacio entre componentes
+        ingredientesPanel.setBorder(BorderFactory.createTitledBorder("Ingredientes"));
+        ingredientesPanel.setBackground(new Color(255, 245, 235));
+        ingredientesPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Margen interno
+        for (Comida ing : INGREDIENTES) {
+            JCheckBox box = new JCheckBox(ing.getDescripcion());
+            box.setBackground(new Color(255, 245, 235));
+            checkBoxesIngredientes.add(box);
+            ingredientesPanel.add(box);
         }
 
-        // Área de texto para mostrar resultados
+        JButton calcularBtn = new JButton("Calcular Total");
+        calcularBtn.setBackground(new Color(255, 220, 180)); // Color de botón
+        calcularBtn.setForeground(Color.BLACK);
+        calcularBtn.setPreferredSize(new Dimension(150, 40));
+        calcularBtn.addActionListener(GraphicalUI::calcularCuenta);
+
         outputArea = new JTextArea();
         outputArea.setEditable(false);
-        outputArea.setLineWrap(true);
-        outputArea.setWrapStyleWord(true);
-        outputArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
-        outputArea.setBackground(new Color(245, 245, 250));
-        outputArea.setMargin(new Insets(10, 10, 10, 10));
-
+        outputArea.setFont(new Font("Arial", Font.PLAIN, 14));
         JScrollPane scrollPane = new JScrollPane(outputArea);
-        scrollPane.setBorder(BorderFactory.createTitledBorder("Salida"));
+        scrollPane.setBorder(BorderFactory.createTitledBorder("Resumen"));
+        scrollPane.setPreferredSize(new Dimension(300, 0)); // Ancho fijo para el resumen
 
-        crearHawaianaBtn.addActionListener(e -> crearPizzaHawaiana());
-        crearPolloBtn.addActionListener(e -> crearPizzaPollo());
-        clonarHawaianaBtn.addActionListener(e -> clonarPizzaHawaiana());
-        clonarPolloBtn.addActionListener(e -> clonarPizzaPollo());
-        compararBtn.addActionListener(e -> compararInstancias());
-        limpiarBtn.addActionListener(e -> outputArea.setText(""));
+        frame.add(topPanel, BorderLayout.NORTH);
+        frame.add(ingredientesPanel, BorderLayout.CENTER);
+        frame.add(calcularBtn, BorderLayout.SOUTH);
+        frame.add(scrollPane, BorderLayout.EAST);
 
-        frame.add(buttonPanel, BorderLayout.NORTH);
-        frame.add(scrollPane, BorderLayout.CENTER);
-
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-        appendToOutput("\uD83C\uDF55 Bienvenido a la Aplicación de Pizzas (Interfaz Gráfica)\n");
-        appendToOutput("Utilice los botones para crear y clonar pizzas.\n");
     }
 
-    private static void crearPizzaHawaiana() {
-        appendToOutput("\n----- Creando una Pizza Hawaiana original -----\n");
-        cliente.setChef(chefHawaiana);
-        pizzaHawaiana = (PizzaHawaiana) cliente.construirPizzaHawaiana(
-                "integral", 5.0,
-                "mozzarella", 3.0,
-                "dulce", 2.5,
-                "cherry", 1.8,
-                2.0
-        );
-        appendToOutput(pizzaHawaiana.getDescripcion());
-    }
+    private static void calcularCuenta(ActionEvent e) {
+        String tipoPizza = (String) tipoPizzaCombo.getSelectedItem();
+        double total = 0.0;
+        StringBuilder desc = new StringBuilder();
 
-    private static void crearPizzaPollo() {
-        appendToOutput("\n----- Creando una Pizza de Pollo original -----\n");
-        cliente.setChef(chefPollo);
-        pizzaPollo = (PizzaPollo) cliente.construirPizzaPollo(
-                "normal", 4.0,
-                "cheddar", 3.5,
-                "desmenuzado", 4.5,
-                "italiano", 2.0,
-                1.5
-        );
-        appendToOutput(pizzaPollo.getDescripcion());
-    }
+        Pizza pizza;
 
-    private static void clonarPizzaHawaiana() {
-        if (pizzaHawaiana == null) {
-            appendToOutput("\nError: Primero debe crear una Pizza Hawaiana original.\n");
-            return;
+        if ("Hawaiana".equals(tipoPizza)) {
+            pizza = new PizzaHawaiana();
+        } else {
+            pizza = new PizzaPollo();
         }
 
-        appendToOutput("\n----- Clonando la Pizza Hawaiana -----\n");
-        pizzaHawaianaClon = pizzaHawaiana.clonar();
-        appendToOutput(((PizzaHawaiana) pizzaHawaianaClon).getDescripcion());
-    }
+        desc.append("\n🍕 Pizza: ").append(tipoPizza).append("\nIngredientes seleccionados:\n");
 
-    private static void clonarPizzaPollo() {
-        if (pizzaPollo == null) {
-            appendToOutput("\nError: Primero debe crear una Pizza de Pollo original.\n");
-            return;
+        for (int i = 0; i < checkBoxesIngredientes.size(); i++) {
+            JCheckBox cb = checkBoxesIngredientes.get(i);
+            if (cb.isSelected()) {
+                Comida ing = INGREDIENTES[i];
+                desc.append(" - ").append(ing.getDescripcion()).append("\n");
+                total += ing.getPrecioUnitario();
+
+                if (pizza instanceof PizzaHawaiana) {
+                    PizzaHawaiana p = (PizzaHawaiana) pizza;
+                    if (ing instanceof Masa) p.setMasa((Masa) ing);
+                    else if (ing instanceof Queso) p.setQueso((Queso) ing);
+                    else if (ing instanceof Tomate) p.setTomate((Tomate) ing);
+                    else if (ing instanceof SalsaTomate) p.setSalsaTomate((SalsaTomate) ing);
+                    else if (ing instanceof Piña) p.setPiña((Piña) ing);
+                } else if (pizza instanceof PizzaPollo) {
+                    PizzaPollo p = (PizzaPollo) pizza;
+                    if (ing instanceof Masa) p.setMasa((Masa) ing);
+                    else if (ing instanceof Queso) p.setQueso((Queso) ing);
+                    else if (ing instanceof Tomate) p.setTomate((Tomate) ing);
+                    else if (ing instanceof SalsaTomate) p.setSalsaTomate((SalsaTomate) ing);
+                    else if (ing instanceof Pollo) p.setPollo((Pollo) ing);
+                }
+            }
         }
 
-        appendToOutput("\n----- Clonando la Pizza de Pollo -----\n");
-        pizzaPolloClon = pizzaPollo.clonar();
-        appendToOutput(((PizzaPollo) pizzaPolloClon).getDescripcion());
-    }
-
-    private static void compararInstancias() {
-        if (pizzaHawaiana == null || pizzaHawaianaClon == null) {
-            appendToOutput("\nError: Primero debe crear y clonar una Pizza Hawaiana.\n");
-            return;
-        }
-
-        appendToOutput("\n----- Comparando instancias de Pizza Hawaiana -----\n");
-        appendToOutput("Son la misma instancia? " + (pizzaHawaiana == pizzaHawaianaClon));
-        appendToOutput("Tienen la misma descripción? " +
-                pizzaHawaiana.getDescripcion().equals(
-                        ((PizzaHawaiana) pizzaHawaianaClon).getDescripcion()));
-    }
-
-    private static void appendToOutput(String text) {
-        outputArea.append(text + "\n");
-        outputArea.setCaretPosition(outputArea.getDocument().getLength());
+        desc.append("\n🧾 Descripción pizza:\n").append(pizza.getDescripcion());
+        desc.append("\n\n💰 Total a pagar: $").append(String.format("%.2f", total));
+        outputArea.setText(desc.toString());
     }
 }

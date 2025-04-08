@@ -4,24 +4,21 @@ import model.base.Comida;
 
 public class SalsaTomate implements Comida {
 
-    private Tomate tomate;
-    private double cantidadTomate;
+    private Tomate tipo;
+    private double precioUnitario;
 
-    public SalsaTomate(Tomate tomate, double cantidadTomate) {
-        this.tomate = tomate;
-        this.cantidadTomate = cantidadTomate;
+    public SalsaTomate(Tomate tipo, double precioUnitario) {
+        this.tipo = tipo;
+        this.precioUnitario = precioUnitario;
     }
 
     @Override
     public String getDescripcion() {
-        return "Salsa de tomate (con " + cantidadTomate + " de " + tomate.getNombre() + ")";
+        return "Salsa de " + tipo.getNombre() + " ($" + precioUnitario + ")";
     }
 
-    public Tomate getTomate() {
-        return tomate;
-    }
-
-    public double getCantidadTomate() {
-        return cantidadTomate;
+    @Override
+    public double getPrecioUnitario() {
+        return precioUnitario;
     }
 }

@@ -1,28 +1,30 @@
 package model.base;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComidaCompuesta implements Comida {
-    protected ArrayList<Comida> children;
+    protected List<Comida> componentes = new ArrayList<>();
 
-    public ComidaCompuesta() {
-        this.children = new ArrayList<>();
+    public void agregarComponente(Comida comida) {
+        componentes.add(comida);
     }
 
     @Override
     public String getDescripcion() {
-        StringBuilder descripcion = new StringBuilder("Comida compuesta que contiene: ");
-        for (Comida comida : children) {
-            descripcion.append(comida.getDescripcion()).append(", ");
+        StringBuilder descripcion = new StringBuilder();
+        for (Comida c : componentes) {
+            descripcion.append("- ").append(c.getDescripcion()).append("\n");
         }
-        return descripcion.substring(0, descripcion.length() - 2);
+        return descripcion.toString();
     }
 
-    public void agregar(Comida comida) {
-        children.add(comida);
-    }
-
-    public void eliminar(Comida comida) {
-        children.remove(comida);
+    @Override
+    public double getPrecioUnitario() {
+        double total = 0;
+        for (Comida c : componentes) {
+            total += c.getPrecioUnitario();
+        }
+        return total;
     }
 }

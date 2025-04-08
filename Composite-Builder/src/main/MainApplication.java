@@ -1,6 +1,7 @@
+package main;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import ui.ConsoleUI;
 import ui.GraphicalUI;
 
