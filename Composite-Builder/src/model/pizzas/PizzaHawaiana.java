@@ -36,7 +36,7 @@ public class PizzaHawaiana extends Pizza {
     }
 
     @Override
-    public PizzaHawaiana clonar() {
+    public PizzaClonable clonar() {
         PizzaHawaiana clone = new PizzaHawaiana();
         clone.setTomate(this.tomate);
         clone.setSalsaTomate(this.salsaTomate);
