@@ -1,37 +1,33 @@
 package model.pizzas;
 
 import model.base.PizzaClonable;
-import model.ingredientes.Masa;
-import model.ingredientes.Piña;
-import model.ingredientes.Pollo;
-import model.ingredientes.Queso;
-import model.ingredientes.SalsaTomate;
-import model.ingredientes.Tomate;
+import model.ingredientes.*;
 
 public class PizzaHawaiana extends Pizza {
-
-    private Tomate tomate;
-    private SalsaTomate salsaTomate;
-    private Queso queso;
-    private Masa masa;
-    private Pollo pollo;
     private Piña piña;
 
-    public PizzaHawaiana(Tomate tomate, SalsaTomate salsaTomate, Queso queso, Masa masa, Pollo pollo, Piña piña) {
+    public PizzaHawaiana() {
         super();
-        this.tomate = tomate;
-        this.salsaTomate = salsaTomate;
-        this.queso = queso;
-        this.masa = masa;
-        this.pollo = pollo;
-        this.piña = piña;
+    }
 
-        this.agregar(tomate);
-        this.agregar(salsaTomate);
-        this.agregar(queso);
-        this.agregar(masa);
-        this.agregar(pollo);
-        this.agregar(piña);
+    public void setTomate(Tomate tomate) {
+        this.tomate = tomate;
+    }
+
+    public void setSalsaTomate(SalsaTomate salsaTomate) {
+        this.salsaTomate = salsaTomate;
+    }
+
+    public void setQueso(Queso queso) {
+        this.queso = queso;
+    }
+
+    public void setMasa(Masa masa) {
+        this.masa = masa;
+    }
+
+    public void setPiña(Piña piña) {
+        this.piña = piña;
     }
 
     @Override
@@ -40,19 +36,13 @@ public class PizzaHawaiana extends Pizza {
     }
 
     @Override
-    public PizzaClonable Clonar() {
-        return new PizzaHawaiana(tomate, salsaTomate, queso, masa, pollo, piña);
-    }
-
-    public PizzaClonable PizzaClonable() {
-        return this.Clonar();
-    }
-
-    public PizzaHawaiana PizzaHawaiana(PizzaClonable pizzaClonable) {
-        return (PizzaHawaiana) pizzaClonable.Clonar();
-    }
-
-    public PizzaHawaiana PizzaHawaiana(Piña piña) {
-        return new PizzaHawaiana(tomate, salsaTomate, queso, masa, pollo, piña);
+    public PizzaClonable clonar() {
+        PizzaHawaiana clone = new PizzaHawaiana();
+        clone.setTomate(this.tomate);
+        clone.setSalsaTomate(this.salsaTomate);
+        clone.setQueso(this.queso);
+        clone.setMasa(this.masa);
+        clone.setPiña(this.piña);
+        return clone;
     }
 }

@@ -1,37 +1,33 @@
 package model.pizzas;
 
 import model.base.PizzaClonable;
-import model.ingredientes.Masa;
-import model.ingredientes.Piña;
-import model.ingredientes.Pollo;
-import model.ingredientes.Queso;
-import model.ingredientes.SalsaTomate;
-import model.ingredientes.Tomate;
+import model.ingredientes.*;
 
 public class PizzaPollo extends Pizza {
-
-    private Tomate tomate;
-    private SalsaTomate salsaTomate;
-    private Queso queso;
-    private Masa masa;
-    private Piña piña;
     private Pollo pollo;
 
-    public PizzaPollo(Tomate tomate, SalsaTomate salsaTomate, Queso queso, Masa masa, Piña piña, Pollo pollo) {
+    public PizzaPollo() {
         super();
-        this.tomate = tomate;
-        this.salsaTomate = salsaTomate;
-        this.queso = queso;
-        this.masa = masa;
-        this.piña = piña;
-        this.pollo = pollo;
+    }
 
-        this.agregar(tomate);
-        this.agregar(salsaTomate);
-        this.agregar(queso);
-        this.agregar(masa);
-        this.agregar(piña);
-        this.agregar(pollo);
+    public void setTomate(Tomate tomate) {
+        this.tomate = tomate;
+    }
+
+    public void setSalsaTomate(SalsaTomate salsaTomate) {
+        this.salsaTomate = salsaTomate;
+    }
+
+    public void setQueso(Queso queso) {
+        this.queso = queso;
+    }
+
+    public void setMasa(Masa masa) {
+        this.masa = masa;
+    }
+
+    public void setPollo(Pollo pollo) {
+        this.pollo = pollo;
     }
 
     @Override
@@ -40,20 +36,13 @@ public class PizzaPollo extends Pizza {
     }
 
     @Override
-    public PizzaClonable Clonar() {
-        return new PizzaPollo(tomate, salsaTomate, queso, masa, piña, pollo);
-    }
-
-    public PizzaClonable PizzaClonable() {
-        return this.Clonar();
-    }
-
-    public PizzaHawaiana PizzaHawaiana(PizzaClonable pizzaClonable) {
-        PizzaPollo cloned = (PizzaPollo) pizzaClonable.Clonar();
-        return new PizzaHawaiana(cloned.tomate, cloned.salsaTomate, cloned.queso, cloned.masa, cloned.pollo, cloned.piña);
-    }
-
-    public PizzaPollo PizzaPollo() {
-        return (PizzaPollo) this.Clonar();
+    public PizzaClonable clonar() {
+        PizzaPollo clone = new PizzaPollo();
+        clone.setTomate(this.tomate);
+        clone.setSalsaTomate(this.salsaTomate);
+        clone.setQueso(this.queso);
+        clone.setMasa(this.masa);
+        clone.setPollo(this.pollo);
+        return clone;
     }
 }
