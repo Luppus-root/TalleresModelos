@@ -1,3 +1,5 @@
+import Strategies.RouteStrategy;
+
 public class NavigationApp {
     private RouteStrategy routingStrategy;
 
@@ -5,11 +7,11 @@ public class NavigationApp {
         this.routingStrategy = rs;
     }
 
-    public void buildRoute(String origin, String destination) {
+    public void buildRoute(String origen, String destino) {
 
-        System.out.println("\nORIGEN: " + origin);
-        System.out.println("DESTINO: " + destination);
+        System.out.println("\nORIGEN: " + origen);
+        System.out.println("DESTINO: " + destino);
 
-        routingStrategy.buildRoute(origin, destination);
+        routingStrategy.buildRoute(origen, destino);
     }
 }
