@@ -1,6 +1,5 @@
 package mineria;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -20,7 +19,6 @@ public abstract class MinadorDatos {
         enviarReporte(datos, palabras);
         cerrarArchivo(archivo);
     }
-
     protected abstract void abrirArchivo(String ruta);
     protected abstract void extraerDatos(File archivo);
     protected abstract void parsearDatos(File datosRaw);
@@ -31,14 +29,13 @@ public abstract class MinadorDatos {
         try (BufferedReader reader = new BufferedReader(new FileReader(datos))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
-                String[] palabrasLinea = linea.trim().split("\\s+");
-                for (String palabra : palabrasLinea) {
-                    if (!palabra.isBlank()) {
-                        palabrasEncontradas.add(palabra);
+                String[] palabras = linea.trim().split("\\s+");
+                for (String p : palabras) {
+                    if (!p.isBlank()) {
+                        palabrasEncontradas.add(p);
                     }
                 }
             }
-            System.out.println("Total palabras analizadas: " + palabrasEncontradas.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -47,23 +44,35 @@ public abstract class MinadorDatos {
 
     protected void enviarReporte(File analisis, String[] palabras) {
         reporte = new File("reporte_final.txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(reporte))) {
-            writer.write("Reporte generado desde archivo: " + analisis.getName());
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(reporte));
+             BufferedReader reader = new BufferedReader(new FileReader(analisis))) {
+
+            writer.write("Reporte generado desde archivo: " + ruta);
             writer.newLine();
-            writer.write("Total de palabras encontradas: " + palabras.length);
+            writer.write("Palabras encontradas:" + palabras.length);
             writer.newLine();
-            writer.newLine();
-            for (String palabra : palabras) {
-                writer.write(palabra);
+
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                writer.write("- " + linea);
                 writer.newLine();
             }
+
             System.out.println("Reporte guardado: " + reporte.getAbsolutePath());
 
-            if (Desktop.isDesktopSupported()) {
-                Desktop.getDesktop().open(reporte);
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        try {
+            if (java.awt.Desktop.isDesktopSupported()) {
+                java.awt.Desktop.getDesktop().open(reporte);
+            } else {
+                System.out.println("No se puede abrir el archivo automáticamente.");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al abrir el reporte: " + e.getMessage());
+        }
     }
-}
+    }
+

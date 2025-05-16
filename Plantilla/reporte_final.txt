@@ -1,8 +1,7 @@
-Reporte generado desde archivo: datos_parseados_pdf.txt
-Total de palabras encontradas: 5
-
-LINEA
-LINEA
-LINEA
-LINEA
-LINEA
+Reporte generado desde archivo: C:\Users\NIKO\Documents\LINEA.txt
+Palabras encontradas:5
+- linea
+- linea
+- linea
+- linea
+- linea

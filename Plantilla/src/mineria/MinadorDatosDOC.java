@@ -12,14 +12,24 @@ public class MinadorDatosDOC extends MinadorDatos {
 
     @Override
     protected void extraerDatos(File archivo) {
-        datosRaw = new File("datos_raw_doc.txt");
+
+        datosRaw = new File("datos_raw.doc");
+        String palabraClave = "DOC";
+
         try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
              BufferedWriter writer = new BufferedWriter(new FileWriter(datosRaw))) {
 
             String linea;
             while ((linea = reader.readLine()) != null) {
-                writer.write(linea);
-                writer.newLine();
+                String lineaProcesada = linea.toLowerCase();
+                String[] palabras = linea.replace(",", " ").split("\\s+");
+                for (String palabra : palabras) {
+                    if (palabra.toLowerCase().contains(palabraClave)) {
+                        writer.write(palabra);
+                        writer.newLine();
+                    }
+                }
+
             }
             System.out.println("Datos extraídos del archivo");
         } catch (IOException e) {
@@ -29,7 +39,7 @@ public class MinadorDatosDOC extends MinadorDatos {
 
     @Override
     protected void parsearDatos(File datosRaw) {
-        datos = new File("datos_parseados_doc.txt");
+        datos = new File("datos_parseados.doc");
         String palabraClave = "doc";
         try (BufferedReader reader = new BufferedReader(new FileReader(datosRaw));
              BufferedWriter writer = new BufferedWriter(new FileWriter(datos))) {

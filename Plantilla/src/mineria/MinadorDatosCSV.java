@@ -18,17 +18,20 @@ public class    MinadorDatosCSV extends MinadorDatos {
 
     @Override
     protected void parsearDatos(File datosRaw) {
-        datos = new File("datos_parseados_csv.txt");
-        String palabraClave = "dato";
+        datos = new File("datos_parseados.txt");
+        String palabraClave = "CSV";
+
         try (BufferedReader reader = new BufferedReader(new FileReader(datosRaw));
              BufferedWriter writer = new BufferedWriter(new FileWriter(datos))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String lineaProcesada = linea.toLowerCase();
-                if (lineaProcesada.contains(palabraClave)) {
-
-                    writer.write(linea.replace(",", " "));
-                    writer.newLine();
+                String[] palabras = linea.replace(",", " ").split("\\s+");
+                for (String palabra : palabras) {
+                    if (palabra.toLowerCase().contains(palabraClave)) {
+                        writer.write(palabra);
+                        writer.newLine();
+                    }
                 }
 
             }
