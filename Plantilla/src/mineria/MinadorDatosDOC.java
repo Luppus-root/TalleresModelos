@@ -13,9 +13,15 @@ public class MinadorDatosDOC extends MinadorDatos {
     @Override
     protected void extraerDatos(File archivo) {
         datosRaw = new File("datos_raw_doc.txt");
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(datosRaw))) {
-            writer.write("Este es un contenido de prueba para DOC\nCon varias lineas\nFin del DOC");
-            System.out.println("Datos extraídos de DOC");
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(datosRaw))) {
+
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                writer.write(linea);
+                writer.newLine();
+            }
+            System.out.println("Datos extraídos del archivo");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -24,12 +30,16 @@ public class MinadorDatosDOC extends MinadorDatos {
     @Override
     protected void parsearDatos(File datosRaw) {
         datos = new File("datos_parseados_doc.txt");
+        String palabraClave = "doc";
         try (BufferedReader reader = new BufferedReader(new FileReader(datosRaw));
              BufferedWriter writer = new BufferedWriter(new FileWriter(datos))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
-                writer.write(linea.toLowerCase());
-                writer.newLine();
+                String lineaProcesada = linea.toLowerCase();
+                if (lineaProcesada.contains(palabraClave)) {
+                    writer.write(lineaProcesada);
+                    writer.newLine();
+                }
             }
             System.out.println("Datos parseados de DOC");
         } catch (IOException e) {

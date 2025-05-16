@@ -1,6 +1,8 @@
 package mineria;
 
+import java.awt.*;
 import java.io.*;
+import java.util.ArrayList;
 
 public abstract class MinadorDatos {
     protected String ruta;
@@ -14,8 +16,8 @@ public abstract class MinadorDatos {
         abrirArchivo(ruta);
         extraerDatos(archivo);
         parsearDatos(datosRaw);
-        analizarDatos(datos);
-        enviarReporte(datos);
+        String[] palabras = analizarDatos(datos);
+        enviarReporte(datos, palabras);
         cerrarArchivo(archivo);
     }
 
@@ -24,26 +26,42 @@ public abstract class MinadorDatos {
     protected abstract void parsearDatos(File datosRaw);
     protected abstract void cerrarArchivo(File archivo);
 
-    protected void analizarDatos(File datos) {
+    protected String[] analizarDatos(File datos) {
+        ArrayList<String> palabrasEncontradas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(datos))) {
             String linea;
-            int contador = 0;
             while ((linea = reader.readLine()) != null) {
-                contador += linea.split("\\s+").length;
+                String[] palabrasLinea = linea.trim().split("\\s+");
+                for (String palabra : palabrasLinea) {
+                    if (!palabra.isBlank()) {
+                        palabrasEncontradas.add(palabra);
+                    }
+                }
             }
-            System.out.println("Total palabras analizadas: " + contador);
+            System.out.println("Total palabras analizadas: " + palabrasEncontradas.size());
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return palabrasEncontradas.toArray(new String[0]);
     }
 
-    protected void enviarReporte(File analisis) {
+    protected void enviarReporte(File analisis, String[] palabras) {
         reporte = new File("reporte_final.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(reporte))) {
             writer.write("Reporte generado desde archivo: " + analisis.getName());
             writer.newLine();
-            writer.write("Este es un reporte simulado.");
+            writer.write("Total de palabras encontradas: " + palabras.length);
+            writer.newLine();
+            writer.newLine();
+            for (String palabra : palabras) {
+                writer.write(palabra);
+                writer.newLine();
+            }
             System.out.println("Reporte guardado: " + reporte.getAbsolutePath());
+
+            if (Desktop.isDesktopSupported()) {
+                Desktop.getDesktop().open(reporte);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

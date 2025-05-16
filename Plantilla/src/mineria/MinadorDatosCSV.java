@@ -2,7 +2,7 @@ package mineria;
 
 import java.io.*;
 
-public class MinadorDatosCSV extends MinadorDatos {
+public class    MinadorDatosCSV extends MinadorDatos {
 
     @Override
     protected void abrirArchivo(String ruta) {
@@ -19,12 +19,18 @@ public class MinadorDatosCSV extends MinadorDatos {
     @Override
     protected void parsearDatos(File datosRaw) {
         datos = new File("datos_parseados_csv.txt");
+        String palabraClave = "dato";
         try (BufferedReader reader = new BufferedReader(new FileReader(datosRaw));
              BufferedWriter writer = new BufferedWriter(new FileWriter(datos))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
-                writer.write(linea.replace(",", " "));
-                writer.newLine();
+                String lineaProcesada = linea.toLowerCase();
+                if (lineaProcesada.contains(palabraClave)) {
+
+                    writer.write(linea.replace(",", " "));
+                    writer.newLine();
+                }
+
             }
             System.out.println("Datos parseados de CSV");
         } catch (IOException e) {

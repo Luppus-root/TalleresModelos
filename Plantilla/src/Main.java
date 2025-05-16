@@ -63,11 +63,6 @@ public class Main {
             gbc.gridwidth = 3;
             frame.add(ejecutarBtn, gbc);
 
-            gbc.gridx = 0;
-            gbc.gridy = 4;
-            gbc.gridwidth = 3;
-            frame.add(scrollPane, gbc);
-
             explorarBtn.addActionListener(e -> {
                 JFileChooser fileChooser = new JFileChooser();
                 int result = fileChooser.showOpenDialog(frame);
