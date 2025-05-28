@@ -1,7 +1,2 @@
 Reporte generado desde archivo: C:\Users\NIKO\Documents\LINEA.txt
-Palabras encontradas:5
-- linea
-- linea
-- linea
-- linea
-- linea
+Palabras encontradas:0

@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.miempresa.politicosapp.iterador;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,17 +7,19 @@ import java.util.Iterator;
  *
  * @author estudiantes
  */
-public class EstudianteIteradorArray implements Iterator{
+public class EstudianteIteradorArray implements Iterator<Estudiante>{
 
   private ArrayList<Estudiante> estudiantesArray;
   private int posicionActual;
   private Notificador notificador;
   
   
-  public EstudianteIteradorArray(){
+  public EstudianteIteradorArray(ArrayList<Estudiante> estudiantesArray) {
       
       this.posicionActual = 0;
-      this.estudiantesArray = new ArrayList<Estudiante>();
+      this.estudiantesArray = estudiantesArray;
+      this.notificador = new Notificador();
+
   }
   
     public boolean hasNext() {
@@ -31,27 +29,15 @@ public class EstudianteIteradorArray implements Iterator{
     }
 
     @Override
-    public Object next() {
-        
-       if (!this.hasNext()){
-           
-           return null;
-       }
-       
-       notificador = new Notificador();
-       boolean falta;
-       
-       for (Estudiante estudiante: estudiantesArray ){
-       
-           
-           String codigoEstudiante = estudiantesArray.get(posicionActual).getCodigo();
-       notificador.enviarMensaje(codigoEstudiante);  
-       }
-       
+    public Estudiante next() {
 
-       
-       
-    
+        Estudiante estudiante = estudiantesArray.get(posicionActual++);
+
+        if (estudiante.getNombre() == null || estudiante.getDireccion() == null || estudiante.getTelefonos().isEmpty()) {
+            notificador.enviarMensaje(estudiante.getCodigo());
+        }
+
+        return estudiante;
     }
     
 }

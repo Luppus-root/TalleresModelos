@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.miempresa.politicosapp.iterador;
 
 import java.util.ArrayList;
 
@@ -19,11 +14,11 @@ public class Estudiante {
     
     
 
-    public Estudiante(String codigo) {
+    public Estudiante(String codigo, String nombre, String direccion) {
         
         this.codigo= codigo;
-        this.nombre=null;
-        this.direccion=null;
+        this.nombre= nombre;
+        this.direccion= direccion;
         this.telefonos = new ArrayList<Integer>();
     }
 
@@ -59,9 +54,5 @@ public class Estudiante {
         this.telefonos = telefonos;
     }
  
-    
-    
-    
-    
-    
+
 }
