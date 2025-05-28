@@ -47,7 +47,7 @@ public class AppMain {
 
                 case 2:
                     iterator = new ArrayListEstudianteIterator(lista);
-                    while (iterator.hasNext()) iterator.next(); // Ir al final
+                    while (iterator.hasNext()) iterator.next();
                     System.out.println("\n← ArrayList (atrás):");
                     while (iterator.hasPrevious()) validador.visit(iterator.previous());
                     break;
@@ -60,7 +60,7 @@ public class AppMain {
 
                 case 4:
                     iterator = new TreeSetEstudianteIterator(set);
-                    while (iterator.hasNext()) iterator.next(); // Ir al final
+                    while (iterator.hasNext()) iterator.next();
                     System.out.println("\n← TreeSet (atrás):");
                     while (iterator.hasPrevious()) validador.visit(iterator.previous());
                     break;
