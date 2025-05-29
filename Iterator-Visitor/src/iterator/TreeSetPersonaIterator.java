@@ -1,14 +1,15 @@
-package iterator;
-import model.Estudiante;
+package src.iterator;
+import src.model.Persona;
+
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.TreeSet;
 
-public class TreeSetEstudianteIterator implements EstudianteIterator {
-    private ListIterator<Estudiante> iterator;
+public class TreeSetPersonaIterator implements PersonaIterator  {
+    private ListIterator<Persona> iterator;
 
-    public TreeSetEstudianteIterator(TreeSet<Estudiante> set) {
-        ArrayList<Estudiante> temp = new ArrayList<>(set);
+    public TreeSetPersonaIterator(TreeSet<Persona> set) {
+        ArrayList<Persona> temp = new ArrayList<>(set);
         this.iterator = temp.listIterator();
     }
 
@@ -18,7 +19,7 @@ public class TreeSetEstudianteIterator implements EstudianteIterator {
     }
 
     @Override
-    public Estudiante next() {
+    public Persona next() {
         return iterator.next();
     }
 
@@ -28,7 +29,7 @@ public class TreeSetEstudianteIterator implements EstudianteIterator {
     }
 
     @Override
-    public Estudiante previous() {
+    public Persona previous() {
         return iterator.previous();
     }
 }

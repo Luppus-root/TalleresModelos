@@ -4,15 +4,14 @@ import src.visitor.PersonaVisitor;
 
 import java.util.List;
 
-public class Estudiante extends Persona implements Comparable<Persona> {
-
-    public Estudiante(String codigo, String nombre, String direccion, List<String> telefonos) {
+public class Docente extends Persona implements Comparable<Persona> {
+    public Docente(String codigo, String nombre, String direccion, List<String> telefonos) {
         super(codigo, nombre, direccion, telefonos);
     }
 
     @Override
     public String toString() {
-        return "Estudiante{" +
+        return "Docente{" +
                 "codigo='" + getCodigo() + '\'' +
                 ", nombre='" + getNombre() + '\'' +
                 ", direccion='" + getDireccion() + '\'' +
@@ -23,4 +22,7 @@ public class Estudiante extends Persona implements Comparable<Persona> {
     public void aceptar(PersonaVisitor visitor) {
         visitor.visit(this);
     }
+
 }
+
+

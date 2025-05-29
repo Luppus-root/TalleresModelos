@@ -1,13 +1,13 @@
-package iterator;
-import model.Estudiante;
+package src.iterator;
 
+import src.model.Persona;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-public class ArrayListEstudianteIterator implements EstudianteIterator {
-    private ListIterator<Estudiante> iterator;
+public class ArrayListPersonaIterator implements PersonaIterator {
+    private ListIterator<Persona> iterator;
 
-    public ArrayListEstudianteIterator(ArrayList<Estudiante> lista) {
+    public  ArrayListPersonaIterator(ArrayList<Persona> lista) {
         this.iterator = lista.listIterator();
     }
 
@@ -17,7 +17,7 @@ public class ArrayListEstudianteIterator implements EstudianteIterator {
     }
 
     @Override
-    public Estudiante next() {
+    public Persona next() {
         return iterator.next();
     }
 
@@ -27,9 +27,7 @@ public class ArrayListEstudianteIterator implements EstudianteIterator {
     }
 
     @Override
-    public Estudiante previous() {
+    public Persona previous() {
         return iterator.previous();
     }
 }
-
-

@@ -1,7 +1,9 @@
-package visitor;
-import model.Estudiante;
+package src.visitor;
 
-public class ValidacionVisitor implements EstudianteVisitor {
+import src.model.Docente;
+import src.model.Estudiante;
+
+public class ValidacionVisitor implements PersonaVisitor  {
 
     @Override
     public void visit(Estudiante estudiante) {
@@ -31,5 +33,38 @@ public class ValidacionVisitor implements EstudianteVisitor {
             System.out.println("Estudiante válido: " + estudiante.getCodigo());
         }
     }
+
+    @Override
+    public void visit(Docente docente) {
+        boolean completo = true;
+
+        if (docente.getCodigo() == null || docente.getCodigo().isEmpty()) {
+            System.out.println("Falta código en docente.");
+            completo = false;
+        } else if (docente.getCodigo().length() > 4) {
+            System.out.println("El código del docente " + docente.getCodigo() + " no puede tener más de 4 dígitos");
+            completo = false;
+        }
+
+        if (docente.getNombre() == null || docente.getNombre().isEmpty()) {
+            System.out.println("Falta nombre en docente con código: " + docente.getCodigo());
+            completo = false;
+        }
+
+        if (docente.getDireccion() == null || docente.getDireccion().isEmpty()) {
+            System.out.println("Falta dirección en docente con código: " + docente.getCodigo());
+            completo = false;
+        }
+
+        if (docente.getTelefonos() == null || docente.getTelefonos().isEmpty()) {
+            System.out.println("Faltan teléfonos en docente con código: " + docente.getCodigo());
+            completo = false;
+        }
+
+        if (completo) {
+            System.out.println("Docente válido: " + docente.getCodigo());
+        }
+    }
 }
+
 
