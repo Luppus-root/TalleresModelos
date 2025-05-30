@@ -1,26 +1,26 @@
 package src.iterator;
-import src.model.Persona;
 
+import src.model.Persona;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import java.util.TreeSet;
 
-public class TreeSetPersonaIterator implements PersonaIterator  {
+public class AtrasTreeSetPersonaIterator implements PersonaIterator {
     private ListIterator<Persona> iterator;
 
-    public TreeSetPersonaIterator(TreeSet<Persona> set) {
+    public AtrasTreeSetPersonaIterator(TreeSet<Persona> set) {
         ArrayList<Persona> temp = new ArrayList<>(set);
-        this.iterator = temp.listIterator();
+        this.iterator = temp.listIterator(temp.size());
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        return false;
     }
 
     @Override
     public Persona next() {
-        return iterator.next();
+        throw new UnsupportedOperationException("Iterador solo retrocede.");
     }
 
     @Override

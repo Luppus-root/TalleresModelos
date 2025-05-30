@@ -42,7 +42,7 @@ public class AppMain {
 
             switch (opcion) {
                 case 1:
-                    iterator = new ArrayListPersonaIterator(listaPersonas);
+                    iterator = new AdelanteArrayListPersonaIterator(listaPersonas);
                     System.out.println("\n→ ArrayList (adelante):");
                     while (iterator.hasNext()) {
                         Persona persona = iterator.next();
@@ -51,9 +51,7 @@ public class AppMain {
                     break;
 
                 case 2:
-                    iterator = new ArrayListPersonaIterator(listaPersonas);
-
-                    while (iterator.hasNext()) iterator.next();
+                    iterator = new AtrasArrayListPersonaIterator(listaPersonas);
                     System.out.println("\n← ArrayList (atrás):");
                     while (iterator.hasPrevious()) {
                         Persona persona = iterator.previous();
@@ -62,7 +60,7 @@ public class AppMain {
                     break;
 
                 case 3:
-                    iterator = new TreeSetPersonaIterator(setPersonas);
+                    iterator = new AdelanteTreeSetPersonaIterator(setPersonas);
                     System.out.println("\n→ TreeSet (adelante):");
                     while (iterator.hasNext()) {
                         Persona persona = iterator.next();
@@ -71,9 +69,7 @@ public class AppMain {
                     break;
 
                 case 4:
-                    iterator = new TreeSetPersonaIterator(setPersonas);
-
-                    while (iterator.hasNext()) iterator.next();
+                    iterator = new AtrasTreeSetPersonaIterator(setPersonas);
                     System.out.println("\n← TreeSet (atrás):");
                     while (iterator.hasPrevious()) {
                         Persona persona = iterator.previous();

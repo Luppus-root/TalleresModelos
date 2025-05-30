@@ -4,21 +4,21 @@ import src.model.Persona;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
-public class ArrayListPersonaIterator implements PersonaIterator {
+public class AtrasArrayListPersonaIterator implements PersonaIterator {
     private ListIterator<Persona> iterator;
 
-    public  ArrayListPersonaIterator(ArrayList<Persona> lista) {
-        this.iterator = lista.listIterator();
+    public AtrasArrayListPersonaIterator(ArrayList<Persona> lista) {
+        this.iterator = lista.listIterator(lista.size());
     }
 
     @Override
     public boolean hasNext() {
-        return iterator.hasNext();
+        return false;
     }
 
     @Override
     public Persona next() {
-        return iterator.next();
+        throw new UnsupportedOperationException("Iterador solo retrocede.");
     }
 
     @Override
