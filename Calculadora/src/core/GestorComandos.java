@@ -1,40 +1,58 @@
 package core;
 
 import comando.Comando;
-
 import java.util.Stack;
 
 public class GestorComandos {
     private final Calculadora calculadora;
-    private final Stack<Memento> historialDeshacer = new Stack<>();
-    private final Stack<Memento> historialRehacer = new Stack<>();
+    private final Stack<Comando> historialDeshacer = new Stack<>();
+    private final Stack<Comando> historialRehacer = new Stack<>();
 
     public GestorComandos(Calculadora calculadora) {
         this.calculadora = calculadora;
     }
 
     public void ejecutar(Comando comando) {
+        // Configurar el comando
         comando.setCalculadora(calculadora);
+
+        // Guardar estado antes de ejecutar
         comando.setMementoAntes(calculadora.crearMemento());
+
+        // Ejecutar el comando
         comando.ejecutar();
+
+        // Guardar estado después de ejecutar
         comando.setMementoDespues(calculadora.crearMemento());
-        historialDeshacer.push(comando.getMementoAntes());
+
+        // Agregar al historial de deshacer
+        historialDeshacer.push(comando);
+
+        // Limpiar historial de rehacer
         historialRehacer.clear();
     }
 
     public void deshacer() {
         if (!historialDeshacer.isEmpty()) {
-            Memento m = historialDeshacer.pop();
-            historialRehacer.push(calculadora.crearMemento());
-            calculadora.restaurar(m);
+            Comando comando = historialDeshacer.pop();
+
+            // Restaurar al estado anterior
+            calculadora.restaurar(comando.getMementoAntes());
+
+            // Mover al historial de rehacer
+            historialRehacer.push(comando);
         }
     }
 
     public void rehacer() {
         if (!historialRehacer.isEmpty()) {
-            Memento m = historialRehacer.pop();
-            historialDeshacer.push(calculadora.crearMemento());
-            calculadora.restaurar(m);
+            Comando comando = historialRehacer.pop();
+
+            // Restaurar al estado posterior
+            calculadora.restaurar(comando.getMementoDespues());
+
+            // Mover de vuelta al historial de deshacer
+            historialDeshacer.push(comando);
         }
     }
 }
