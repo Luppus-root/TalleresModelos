@@ -18,13 +18,25 @@ public class ClienteUI extends JFrame {
         cliente = new Cliente();
         setTitle("Calculadora con Deshacer/Rehacer");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 300);
+        setSize(500, 300);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
-        input = new JTextField();
-        resultado = new JLabel("Resultado: 0");
+
+        input = new JTextField(20);
+        input.setFont(new Font("Arial", Font.PLAIN, 16));
+
+        JPanel inputPanel = new JPanel(new FlowLayout());
+        inputPanel.add(new JLabel("Ingrese el valor:"));
+        inputPanel.add(input);
+
+        resultado = new JLabel("Resultado: 0.0", SwingConstants.CENTER);
+        resultado.setFont(new Font("Arial", Font.BOLD, 18));
+        resultado.setBorder(BorderFactory.createEtchedBorder());
+
         error = new JLabel();
         error.setForeground(Color.RED);
+        error.setFont(new Font("Arial", Font.ITALIC, 12));
 
         JPanel buttons = new JPanel(new GridLayout(2, 4));
         buttons.add(createButton("+", () -> cliente.botonSumar(getValor()), KeyStroke.getKeyStroke(KeyEvent.VK_ADD, 0)));
@@ -50,7 +62,7 @@ public class ClienteUI extends JFrame {
         southPanel.add(resultado, BorderLayout.CENTER);
         southPanel.add(error, BorderLayout.SOUTH);
 
-        add(input, BorderLayout.NORTH);
+        add(inputPanel, BorderLayout.NORTH);
         add(buttons, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
         add(actualizar, BorderLayout.EAST);
@@ -107,6 +119,13 @@ public class ClienteUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(ClienteUI::new);
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception e) {
+                // Usar look and feel por defecto
+            }
+            new ClienteUI();
+        });
     }
 }
