@@ -1,0 +1,30 @@
+package com.beautyathome.beautyathome.agenda.state;
+
+import com.beautyathome.beautyathome.agenda.Agenda;
+
+// agenda/state/Ocupado.java
+public class Ocupado implements DisponibilidadState {
+    private final Agenda agenda;
+    private final String profesionalId;
+
+    public Ocupado(Agenda agenda, String profesionalId) {
+        this.agenda = agenda;
+        this.profesionalId = profesionalId;
+    }
+
+    @Override
+    public void reservar() {
+        agenda.cambiarEstado(profesionalId, new Ocupado(agenda, profesionalId));
+    }
+
+    @Override
+    public void liberar() {
+        // No hace falta liberar si ya está disponible
+    }
+
+    @Override
+    public String obtenerEstado() {
+        return "Disponible";
+    }
+}
+
