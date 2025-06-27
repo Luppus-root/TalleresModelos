@@ -5,7 +5,6 @@ import com.beautyathome.beautyathome.model.Resena;
 import java.util.List;
 import java.util.Optional;
 
-// proxy/ResenaProxy.java
 public class ResenaProxy {
     private final Resena resena;
     private final boolean tienePermiso;
@@ -24,6 +23,6 @@ public class ResenaProxy {
     }
 
     public int getEstrellas() {
-        return resena.getEstrellas(); // Puede ser público siempre
+        return resena.getEstrellas();
     }
 }

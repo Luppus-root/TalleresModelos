@@ -2,7 +2,6 @@ package com.beautyathome.beautyathome.service.composite;
 
 import java.util.List;
 
-// service/composite/ServicioDecorator.java
 public abstract class ServicioDecorator implements ServicioComponent {
     protected ServicioComponent servicioBase;
 

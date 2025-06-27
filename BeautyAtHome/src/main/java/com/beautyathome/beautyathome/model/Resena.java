@@ -5,7 +5,6 @@ import com.beautyathome.beautyathome.visitor.ResenaVisitor;
 import java.time.LocalDate;
 import java.util.List;
 
-// model/Resena.java
 public class Resena {
     private final String idClienteAnonimo;
     private final String texto;

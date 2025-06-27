@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-// service/composite/PaqueteServicio.java
 public class PaqueteServicio implements ServicioComponent {
 
     private final String nombre;

@@ -3,7 +3,6 @@ package com.beautyathome.beautyathome.factory;
 import com.beautyathome.beautyathome.model.Profesional;
 import com.beautyathome.beautyathome.model.ProfesionalPatrocinado;
 
-// factory/FactoryProfesionalPatrocinado.java
 public class FactoryProfesionalPatrocinado implements ProfesionalFactory {
     private final String marca;
 

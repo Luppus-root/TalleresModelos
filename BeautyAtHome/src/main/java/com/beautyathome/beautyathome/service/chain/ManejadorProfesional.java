@@ -5,7 +5,6 @@ import com.beautyathome.beautyathome.model.Profesional;
 import com.beautyathome.beautyathome.service.dto.AgendamientoSolicitud;
 import lombok.RequiredArgsConstructor;
 
-// service/chain/ManejadorProfesional.java
 @RequiredArgsConstructor
 public class ManejadorProfesional implements ManejadorAgendamiento {
 

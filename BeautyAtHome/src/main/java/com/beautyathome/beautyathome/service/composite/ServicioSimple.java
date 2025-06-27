@@ -2,7 +2,6 @@ package com.beautyathome.beautyathome.service.composite;
 
 import java.util.List;
 
-// service/composite/ServicioSimple.java
 public class ServicioSimple implements ServicioComponent {
 
     private final String nombre;

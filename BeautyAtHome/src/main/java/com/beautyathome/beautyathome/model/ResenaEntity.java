@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-// model/ResenaEntity.java
 @Entity
 public class ResenaEntity {
 

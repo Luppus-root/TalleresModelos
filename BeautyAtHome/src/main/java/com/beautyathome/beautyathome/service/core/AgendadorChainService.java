@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-// service/core/AgendadorChainService.java
 @Service
 @RequiredArgsConstructor
 public class AgendadorChainService {
@@ -26,7 +25,6 @@ public class AgendadorChainService {
                 .map(p -> new ManejadorProfesional(p, agenda))
                 .toList();
 
-        // Enlazar la cadena
         for (int i = 0; i < nodos.size() - 1; i++) {
             nodos.get(i).establecerSiguiente(nodos.get(i + 1));
         }

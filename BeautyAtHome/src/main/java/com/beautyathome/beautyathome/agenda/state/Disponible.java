@@ -18,7 +18,6 @@ public class Disponible implements DisponibilidadState {
 
     @Override
     public void liberar() {
-        // No hace falta liberar si ya está disponible
     }
 
     @Override

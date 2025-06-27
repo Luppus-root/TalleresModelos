@@ -2,7 +2,6 @@ package com.beautyathome.beautyathome.agenda.state;
 
 import com.beautyathome.beautyathome.agenda.Agenda;
 
-// agenda/state/Ocupado.java
 public class Ocupado implements DisponibilidadState {
     private final Agenda agenda;
     private final String profesionalId;
@@ -19,7 +18,6 @@ public class Ocupado implements DisponibilidadState {
 
     @Override
     public void liberar() {
-        // No hace falta liberar si ya está disponible
     }
 
     @Override

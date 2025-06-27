@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-// service/core/ProfesionalService.java
 @Service
 @RequiredArgsConstructor
 public class ProfesionalService {
@@ -31,7 +30,6 @@ public class ProfesionalService {
 
         repo.save(profesional);
 
-        // Registrar en la agenda con estado inicial
         agenda.cambiarEstado(
                 profesional.getNombre(),
                 new Disponible(agenda, profesional.getNombre())

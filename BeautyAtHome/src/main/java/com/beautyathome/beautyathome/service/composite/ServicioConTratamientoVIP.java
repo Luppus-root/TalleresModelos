@@ -1,6 +1,5 @@
 package com.beautyathome.beautyathome.service.composite;
 
-// service/composite/ServicioConTratamientoVIP.java
 public class ServicioConTratamientoVIP extends ServicioDecorator {
 
     public ServicioConTratamientoVIP(ServicioComponent base) {

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-// controller/ResenaController.java
 @RestController
 @RequestMapping("/resenas")
 @RequiredArgsConstructor
@@ -31,7 +30,7 @@ public class ResenaController {
             @PathVariable String profesionalId,
             @RequestParam(defaultValue = "false") boolean verTodo
     ) {
-        boolean tienePermiso = verTodo; // lógica futura con roles
+        boolean tienePermiso = verTodo;
         return ResponseEntity.ok(service.obtenerConPrivacidad(profesionalId, tienePermiso));
     }
 

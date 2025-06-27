@@ -2,7 +2,6 @@ package com.beautyathome.beautyathome.model;
 
 import jakarta.persistence.*;
 
-// model/Usuario.java
 @Entity
 public class Usuario {
 
@@ -19,8 +18,6 @@ public class Usuario {
 
     @Enumerated(EnumType.STRING)
     private Rol rol;
-
-    // Getters y setters
 
     public Long getId() { return id; }
     public String getNombre() { return nombre; }

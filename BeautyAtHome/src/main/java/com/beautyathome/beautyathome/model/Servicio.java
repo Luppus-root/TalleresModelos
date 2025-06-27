@@ -16,8 +16,6 @@ public class Servicio {
         this.imagenes = builder.imagenes;
     }
 
-    // Getters...
-
     public static class Builder {
         private String nombre;
         private String descripcion;

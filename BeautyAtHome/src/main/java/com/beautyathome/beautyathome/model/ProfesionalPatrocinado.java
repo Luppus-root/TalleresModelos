@@ -1,5 +1,5 @@
 package com.beautyathome.beautyathome.model;
-// model/ProfesionalPatrocinado.java
+
 public class ProfesionalPatrocinado extends Profesional {
     private String marcaPatrocinadora;
 

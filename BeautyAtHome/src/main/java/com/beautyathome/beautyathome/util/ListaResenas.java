@@ -5,7 +5,6 @@ import com.beautyathome.beautyathome.model.Resena;
 import java.util.ArrayList;
 import java.util.List;
 
-// util/ListaResenas.java
 public class ListaResenas {
     private final List<Resena> resenas = new ArrayList<>();
 
