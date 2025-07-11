@@ -1,50 +1,55 @@
 package com.beautyathome.backend.pattern.proxy;
 
+import com.beautyathome.backend.entity.Reseña;
+import com.beautyathome.backend.repository.ReseñaRepository;
 import com.beautyathome.backend.pattern.visitor.VisitorReseña;
 
-public class ReseñaProxy implements Reseña {
+public class ReseñaProxy implements IReseña {
 
+    private Long idReseña;
     private ReseñaReal reseñaReal;
+    private ReseñaRepository reseñaRepository;
 
-    // Simulación de permiso (en la práctica se debe pasar el usuario actual)
-    private boolean accesoPermitido;
-
-    public ReseñaProxy(ReseñaReal r) {
-        this.reseñaReal = r;
-        this.accesoPermitido = validarAcceso();
+    public ReseñaProxy(Long idReseña, ReseñaRepository reseñaRepository) {
+        this.idReseña = idReseña;
+        this.reseñaRepository = reseñaRepository;
     }
 
-    // Aquí podrías validar según el usuario autenticado, roles, etc.
-    public boolean validarAcceso() {
-        // Simulación: el cliente puede ver su propia reseña
-        // return AuthService.usuarioActual().equals(reseñaReal.getCliente());
-        return true; // por ahora damos acceso
+    private void cargarReseña() {
+        if (reseñaReal == null) {
+            Reseña entity = reseñaRepository.findById(idReseña)
+                    .orElseThrow(() -> new RuntimeException("Reseña no encontrada"));
+            this.reseñaReal = new ReseñaReal(entity);
+        }
     }
 
     @Override
     public void eliminarReseña() {
-        if (accesoPermitido) {
-            reseñaReal.eliminarReseña();
-        } else {
-            System.out.println("Acceso denegado para eliminar reseña.");
-        }
+        cargarReseña();
+        reseñaReal.eliminarReseña();
     }
 
     @Override
     public String obtenerReseña() {
-        if (accesoPermitido) {
-            return reseñaReal.obtenerReseña();
-        } else {
-            return "No tienes permiso para ver esta reseña.";
-        }
+        cargarReseña();
+        return reseñaReal.obtenerReseña();
+    }
+
+    @Override
+    public void exportar() {
+        cargarReseña();
+        reseñaReal.exportar();
+    }
+
+    @Override
+    public String resumen() {
+        cargarReseña();
+        return reseñaReal.resumen();
     }
 
     @Override
     public void aceptar(VisitorReseña v) {
-        if (accesoPermitido) {
-            reseñaReal.aceptar(v);
-        } else {
-            System.out.println("No autorizado para aplicar Visitor sobre esta reseña.");
-        }
+        cargarReseña();
+        reseñaReal.aceptar(v);
     }
 }

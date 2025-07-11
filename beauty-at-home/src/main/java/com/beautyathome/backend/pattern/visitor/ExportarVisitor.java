@@ -1,10 +1,13 @@
 package com.beautyathome.backend.pattern.visitor;
 
 import com.beautyathome.backend.pattern.proxy.ReseñaReal;
+import com.beautyathome.backend.entity.Cliente;
+
+import java.time.format.DateTimeFormatter;
 
 public class ExportarVisitor implements VisitorReseña {
 
-    private String formato;
+    private final String formato;
 
     public ExportarVisitor(String formato) {
         this.formato = formato.toLowerCase();
@@ -20,6 +23,13 @@ public class ExportarVisitor implements VisitorReseña {
     }
 
     private void exportarComoJSON(ReseñaReal r) {
+        Cliente cliente = r.getCliente();
+        String nombreCliente = (cliente != null && cliente.getNombre() != null) ? cliente.getNombre() : "Anónimo";
+        String comentario = r.getComentario() != null ? r.getComentario() : "";
+        String fecha = r.getFechaRealizacion() != null
+                ? r.getFechaRealizacion().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                : "Sin fecha";
+
         String json = String.format("""
         {
           "cliente": "%s",
@@ -27,16 +37,25 @@ public class ExportarVisitor implements VisitorReseña {
           "comentario": "%s",
           "fecha": "%s"
         }
-        """, r.getCliente().getNombre(), r.getCalificacion(), r.getComentario(), r.getFechaRealizacion());
-        System.out.println(json);
+        """, nombreCliente, r.getCalificacion(), comentario, fecha);
+
+        System.out.println("📤 Exportación JSON:\n" + json);
     }
 
     private void exportarComoCSV(ReseñaReal r) {
+        Cliente cliente = r.getCliente();
+        String nombreCliente = (cliente != null && cliente.getNombre() != null) ? cliente.getNombre() : "Anónimo";
+        String comentario = r.getComentario() != null ? r.getComentario() : "";
+        String fecha = r.getFechaRealizacion() != null
+                ? r.getFechaRealizacion().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                : "Sin fecha";
+
         String csv = String.format("\"%s\",%d,\"%s\",\"%s\"",
-                r.getCliente().getNombre(),
+                nombreCliente,
                 r.getCalificacion(),
-                r.getComentario(),
-                r.getFechaRealizacion());
-        System.out.println(csv);
+                comentario,
+                fecha);
+
+        System.out.println("📤 Exportación CSV:\n" + csv);
     }
 }

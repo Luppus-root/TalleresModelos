@@ -1,43 +1,43 @@
 package com.beautyathome.backend.pattern.proxy;
 
+import com.beautyathome.backend.entity.Reseña;
 import com.beautyathome.backend.entity.Cliente;
 import com.beautyathome.backend.pattern.visitor.VisitorReseña;
 
-import java.awt.image.BufferedImage;
-import java.util.Arrays;
-import java.util.Date;
+import java.time.LocalDate;
 
-public class ReseñaReal implements Reseña {
+public class ReseñaReal implements IReseña {
 
-    private Cliente cliente;
-    private int calificacion;
-    private String comentario;
-    private Date fechaRealizacion;
-    private BufferedImage[] fotosResultado;
+    private Reseña reseña;
 
-    public ReseñaReal(Cliente cliente, int calificacion, String comentario, Date fechaRealizacion, BufferedImage[] fotosResultado) {
-        this.cliente = cliente;
-        this.calificacion = calificacion;
-        this.comentario = comentario;
-        this.fechaRealizacion = fechaRealizacion;
-        this.fotosResultado = fotosResultado;
+    public ReseñaReal(Reseña reseña) {
+        this.reseña = reseña;
     }
 
     @Override
     public void eliminarReseña() {
-        this.comentario = "[ELIMINADA]";
-        this.calificacion = 0;
-        this.fotosResultado = new BufferedImage[0];
+        reseña.setTexto("[RESEÑA ELIMINADA]");
+        reseña.setEstrellas(0);
         System.out.println("Reseña eliminada.");
     }
 
     @Override
     public String obtenerReseña() {
-        return "Cliente: " + cliente.getNombre() + "\n"
-                + "Calificación: " + calificacion + "\n"
-                + "Comentario: " + comentario + "\n"
-                + "Fecha: " + fechaRealizacion + "\n"
-                + "Fotos: " + (fotosResultado != null ? fotosResultado.length : 0);
+        return "Cliente: " + getCliente().getNombre() + "\n"
+                + "Estrellas: " + getCalificacion() + "\n"
+                + "Comentario: " + getComentario() + "\n"
+                + "Fecha: " + getFechaRealizacion();
+    }
+
+    @Override
+    public void exportar() {
+        System.out.println("Exportando reseña...");
+    }
+
+    @Override
+    public String resumen() {
+        String texto = getComentario();
+        return texto.substring(0, Math.min(texto.length(), 50)) + "...";
     }
 
     @Override
@@ -45,24 +45,30 @@ public class ReseñaReal implements Reseña {
         v.visitReseñaReal(this);
     }
 
-    // Getters para Visitor u otras lógicas si se necesita acceso seguro
     public Cliente getCliente() {
-        return cliente;
+        if (reseña.getServicioRealizado() != null) {
+            return reseña.getServicioRealizado().getCliente();
+        }
+        return null;
     }
 
+    public LocalDate getFechaRealizacion() {
+        if (reseña.getServicioRealizado() != null) {
+            return reseña.getServicioRealizado().getFecha();
+        }
+        return null;
+    }
+
+
     public int getCalificacion() {
-        return calificacion;
+        return reseña.getEstrellas();
     }
 
     public String getComentario() {
-        return comentario;
+        return reseña.getTexto();
     }
 
-    public Date getFechaRealizacion() {
-        return fechaRealizacion;
-    }
-
-    public BufferedImage[] getFotosResultado() {
-        return fotosResultado;
+    public Reseña getReseña() {
+        return reseña;
     }
 }
