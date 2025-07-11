@@ -16,7 +16,5 @@ public class ProfesionalDTO {
     private String fotoUrl;
     private String email;
 
-    private List<Long> zonaIds;
-    private Long marcaId;
 }
 
