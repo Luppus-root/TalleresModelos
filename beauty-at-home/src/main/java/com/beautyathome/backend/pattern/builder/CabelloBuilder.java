@@ -7,8 +7,6 @@ import java.util.List;
 public class CabelloBuilder implements ServicioBuilder {
     private ServicioSimple servicio;
 
-
-
     private String tipoCabello;
     private List<String> tratamientos = new ArrayList<>();
 

@@ -1,16 +1,15 @@
 package com.beautyathome.backend.pattern.singleton;
 
 import com.beautyathome.backend.entity.Profesional;
-import com.beautyathome.backend.pattern.cor.Handler;
+import com.beautyathome.backend.pattern.cor.*;
 
 import java.util.*;
 
 public class AgendaManager {
 
-    private static AgendaManager instance;
+    private static volatile AgendaManager instance; // thread-safe singleton
 
     private Map<Profesional, List<Date>> agendaProfesional;
-
     private Handler primerHandler;
 
     private AgendaManager() {
@@ -20,35 +19,39 @@ public class AgendaManager {
 
     public static AgendaManager getInstance() {
         if (instance == null) {
-            instance = new AgendaManager();
+            synchronized (AgendaManager.class) {
+                if (instance == null) {
+                    instance = new AgendaManager();
+                }
+            }
         }
         return instance;
     }
 
     private void inicializarCadena() {
-        // Aquí puedes construir tu cadena, por ejemplo:
-        // DisponibilidadHandler -> ValidacionFechaHandler -> GuardarHandler
-        // primerHandler = new DisponibilidadHandler();
-        // primerHandler.setSiguiente(new ValidacionFechaHandler(...));
-        // Por ahora, placeholder
-        this.primerHandler = null;
+        // Crear Handlers con disponibilidad (se puede parametrizar)
+        com.beautyathome.backend.pattern.cor.Handler cabello = new HandlerCabello("Cabello", true);
+        Handler manicure = new HandlerManicure("Manicure", true);
+        Handler pedicure = new HandlerPedicure("Pedicure", true);
+        Handler maquillaje = new HandlerMaquillaje("Maquillaje", true);
+
+        // Construir la cadena
+        cabello.setSiguiente(manicure);
+        manicure.setSiguiente(pedicure);
+        pedicure.setSiguiente(maquillaje);
+
+        // Asignar primer handler
+        primerHandler = cabello;
     }
 
     public boolean agendarServicio(Profesional prof, Date fecha) {
-
         List<Date> disponibles = agendaProfesional.getOrDefault(prof, new ArrayList<>());
 
-
         if (disponibles.contains(fecha)) {
-
-
-            // Remover la fecha de la lista (ya no estará disponible)
             disponibles.remove(fecha);
             agendaProfesional.put(prof, disponibles);
-            return true; // Agendamiento exitoso
+            return true;
         }
-
-        // Si la fecha no está disponible, no se agenda
         return false;
     }
 
@@ -58,5 +61,13 @@ public class AgendaManager {
 
     public void registrarDisponibilidad(Profesional prof, List<Date> fechas) {
         agendaProfesional.put(prof, new ArrayList<>(fechas));
+    }
+
+    public void procesarSolicitud(Solicitud solicitud) {
+        if (primerHandler != null) {
+            primerHandler.manejarSolicitud(solicitud);
+        } else {
+            System.out.println("No hay cadena de responsabilidad inicializada.");
+        }
     }
 }
