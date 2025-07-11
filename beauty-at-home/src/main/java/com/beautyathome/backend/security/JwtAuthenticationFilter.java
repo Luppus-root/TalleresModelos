@@ -1,51 +1,68 @@
 package com.beautyathome.backend.security;
 
-
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.*;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+import com.beautyathome.backend.entity.Usuario;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-@Component
-@RequiredArgsConstructor
-public class JwtAuthenticationFilter extends GenericFilter {
+public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final JwtTokenUtil jwtUtil;
-    private final JwtUserDetailsService userDetailsService;
+    private JwtUtils jwtUtils;
+
+    public JwtAuthenticationFilter(JwtUtils jwtUtils) {
+        this.jwtUtils = jwtUtils;
+    }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
-
-        HttpServletRequest httpRequest = (HttpServletRequest) request;
-        String authHeader = httpRequest.getHeader("Authorization");
-
-        String token = null;
-        String email = null;
-
-        if (StringUtils.hasText(authHeader) && authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7);
-            email = jwtUtil.extraerEmail(token);
+    public Authentication attemptAuthentication(HttpServletRequest request,
+                                                HttpServletResponse response) throws AuthenticationException {
+        ObjectMapper mapper = new ObjectMapper();
+        Usuario user = null;
+        String email = "";
+        String password = "";
+        try{
+            user = mapper.readValue(request.getInputStream(), Usuario.class);
+            email = user.getEmail();
+            password = user.getPassword();
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            var userDetails = userDetailsService.loadUserByUsername(email);
-            if (jwtUtil.validarToken(token, userDetails)) {
-                var authToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-
-                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpRequest));
-                SecurityContextHolder.getContext().setAuthentication(authToken);
-            }
-        }
-
-        chain.doFilter(request, response);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email, password);
+        return getAuthenticationManager().authenticate(authenticationToken);
     }
+
+    @Override
+    protected void successfulAuthentication(HttpServletRequest request,
+                                            HttpServletResponse response,
+                                            FilterChain chain,
+                                            Authentication authResult) throws IOException, ServletException {
+        User user = (User) authResult.getPrincipal();
+        ObjectMapper mapper = new ObjectMapper();
+        String token = jwtUtils.generateToken(user.getUsername());
+        response.addHeader("Authorization",token);
+        Map<String, Object> httpResponse = new HashMap<>();
+        httpResponse.put("token", token);
+        httpResponse.put("username", user);
+        httpResponse.put("Mensaje","Authentication Successful");
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        response.getWriter().write(mapper.writeValueAsString(httpResponse));
+        response.setStatus(HttpStatus.OK.value());
+        response.getWriter().flush();
+        super.successfulAuthentication(request, response, chain, authResult);
+    }
+
 }
 
