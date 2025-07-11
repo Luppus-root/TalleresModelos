@@ -7,17 +7,21 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class ServicioConRegalo extends ServicioDecorator {
+    private String regalo;
 
-    private String detalleRegalo;
+    public ServicioConRegalo(ServicioComponent servicio, String regalo) {
+        super(servicio);
+        this.regalo = regalo;
+    }
 
-    public ServicioConRegalo(ServicioComponent servicioBase, String detalleRegalo) {
-        super(servicioBase);
-        this.detalleRegalo = detalleRegalo;
+    @Override
+    public Double calcularPrecio() {
+        // El precio no cambia, solo se añade el regalo
+        return servicioCompuesto.calcularPrecio();
     }
 
     @Override
     public String getDescripcion() {
-        return super.getDescripcion() + " + Regalo: " + detalleRegalo;
+        return servicioCompuesto.getDescripcion() + " | Incluye regalo: " + regalo;
     }
 }
-

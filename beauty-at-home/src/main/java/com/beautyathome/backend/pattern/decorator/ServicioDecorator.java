@@ -8,33 +8,29 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class ServicioDecorator extends ServicioComponent {
+    protected ServicioComponent servicioCompuesto;
 
-    protected ServicioComponent servicioBase;
+    public ServicioDecorator(ServicioComponent servicio) {
+        super();
+        this.servicioCompuesto = servicio;
+    }
+
+
+    @Override
+    public abstract Double calcularPrecio();
 
     @Override
     public String getNombre() {
-        return servicioBase.getNombre();
+        return servicioCompuesto.getNombre();
     }
 
     @Override
     public String getDescripcion() {
-        return servicioBase.getDescripcion();
+        return servicioCompuesto.getDescripcion();
     }
 
     @Override
     public Double getPrecio() {
-        return servicioBase.getPrecio();
-    }
-
-    @Override
-    public Long getId() {
-        return servicioBase.getId();
-    }
-
-    @Override
-    public Double calcularPrecio() {
-        return servicioBase.calcularPrecio();
+        return servicioCompuesto.getPrecio();
     }
 }
-
-

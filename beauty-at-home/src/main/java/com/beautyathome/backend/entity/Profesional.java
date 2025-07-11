@@ -1,5 +1,6 @@
 package com.beautyathome.backend.entity;
 
+import com.beautyathome.backend.pattern.builder.ServicioBuilder;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,6 +34,8 @@ public class Profesional extends Usuario {
 
     @OneToMany(mappedBy = "profesional", cascade = CascadeType.ALL)
     private List<ServicioRealizado> serviciosRealizados;
+
+
 
     public void agregarZona(ZonaCobertura zona) {
         this.zonasCobertura.add(zona);

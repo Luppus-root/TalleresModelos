@@ -7,22 +7,21 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 public class ServicioConDescuento extends ServicioDecorator {
+    private Double descuento; // porcentaje entre 0 y 1 (ej: 0.2 para 20%)
 
-    private double porcentajeDescuento;
-
-    public ServicioConDescuento(ServicioComponent servicioBase, double porcentajeDescuento) {
-        super(servicioBase);
-        this.porcentajeDescuento = porcentajeDescuento;
+    public ServicioConDescuento(ServicioComponent servicio, Double descuento) {
+        super(servicio);
+        this.descuento = descuento;
     }
 
     @Override
     public Double calcularPrecio() {
-        double original = super.calcularPrecio();
-        return original - (original * porcentajeDescuento / 100);
+        Double precioBase = servicioCompuesto.calcularPrecio();
+        return precioBase - (precioBase * descuento);
     }
 
     @Override
     public String getDescripcion() {
-        return super.getDescripcion() + " (Descuento aplicado: " + porcentajeDescuento + "%)";
+        return servicioCompuesto.getDescripcion() + " | Descuento aplicado: " + (int)(descuento * 100) + "%";
     }
 }
