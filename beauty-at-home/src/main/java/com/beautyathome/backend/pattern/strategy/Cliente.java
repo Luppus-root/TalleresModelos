@@ -1,5 +1,5 @@
 package com.beautyathome.backend.pattern.strategy;
-import com.beautyathome.backend.pattern.strategy.IEstrategia
+import com.beautyathome.backend.pattern.strategy.IEstrategia;
 
 public class Cliente {
     private String nombre;

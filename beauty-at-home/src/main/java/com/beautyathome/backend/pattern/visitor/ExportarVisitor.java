@@ -1,7 +1,7 @@
 package com.beautyathome.backend.pattern.visitor;
 
+import com.beautyathome.backend.entity.Cliente;
 import com.beautyathome.backend.pattern.proxy.ReseñaReal;
-import com.beautyathome.backend.pattern.strategy.Cliente;
 
 import java.time.format.DateTimeFormatter;
 
@@ -23,7 +23,7 @@ public class ExportarVisitor implements VisitorReseña {
     }
 
     private void exportarComoJSON(ReseñaReal r) {
-        Cliente cliente = r.getCliente();
+        com.beautyathome.backend.entity.Cliente cliente = r.getCliente();
         String nombreCliente = (cliente != null && cliente.getNombre() != null) ? cliente.getNombre() : "Anónimo";
         String comentario = r.getComentario() != null ? r.getComentario() : "";
         String fecha = r.getFechaRealizacion() != null

@@ -10,7 +10,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class PaqueteServicio {
+public class ServicioPaquete {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
