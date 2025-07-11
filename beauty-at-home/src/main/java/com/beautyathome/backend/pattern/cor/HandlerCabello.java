@@ -1,12 +1,12 @@
-package com.beautyathome.backend.pattern.chain;
+package com.beautyathome.backend.pattern.cor;
 
-public class ProfesionalHandler implements Handler {
+public class HandlerCabello implements Handler {
 
     private Handler siguiente;
     private String especialidad;
     private boolean disponible;
 
-    public ProfesionalHandler(String especialidad, boolean disponible) {
+    public HandlerCabello(String especialidad, boolean disponible) {
         this.especialidad = especialidad;
         this.disponible = disponible;
     }
@@ -29,7 +29,8 @@ public class ProfesionalHandler implements Handler {
         }
     }
 
+    @Override
     public boolean puedeManejar(Solicitud solicitud) {
-        return disponible && solicitud.getDescripcion().contains(especialidad);
+        return disponible && solicitud.getDescripcion().toLowerCase().contains("cabello");
     }
 }

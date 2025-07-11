@@ -1,7 +1,7 @@
 package com.beautyathome.backend.pattern.singleton;
 
 import com.beautyathome.backend.entity.Profesional;
-import com.beautyathome.backend.pattern.chain.Handler;
+import com.beautyathome.backend.pattern.cor.Handler;
 
 import java.util.*;
 
@@ -35,18 +35,20 @@ public class AgendaManager {
     }
 
     public boolean agendarServicio(Profesional prof, Date fecha) {
-        if (primerHandler != null) {
-            return primerHandler.procesar(prof, fecha);
-        }
 
         List<Date> disponibles = agendaProfesional.getOrDefault(prof, new ArrayList<>());
 
+
         if (disponibles.contains(fecha)) {
+
+
+            // Remover la fecha de la lista (ya no estará disponible)
             disponibles.remove(fecha);
             agendaProfesional.put(prof, disponibles);
-            return true;
+            return true; // Agendamiento exitoso
         }
 
+        // Si la fecha no está disponible, no se agenda
         return false;
     }
 

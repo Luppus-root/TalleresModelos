@@ -1,7 +1,7 @@
 package com.beautyathome.backend.pattern.visitor;
 
 import com.beautyathome.backend.pattern.proxy.ReseñaReal;
-import com.beautyathome.backend.entity.Cliente;
+import com.beautyathome.backend.pattern.strategy.Cliente;
 
 import java.time.format.DateTimeFormatter;
 

@@ -1,8 +1,5 @@
 package com.beautyathome.backend.pattern.factory;
 
-import com.beautyathome.backend.pattern.factory.Profesional;
-import com.beautyathome.backend.pattern.factory.ProfesionalEstandar;
-import com.beautyathome.backend.pattern.factory.ProfesionalPatrocinado;
 import com.beautyathome.backend.pattern.state.Disponible;
 import com.beautyathome.backend.pattern.state.EstadoDisponibilidad;
 
