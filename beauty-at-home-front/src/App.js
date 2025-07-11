@@ -12,11 +12,11 @@ import ProfilePage from "./pages/ProfilePage";
 import FavoritesPage from "./pages/FavoritesPage";
 import NotificationsPage from "./pages/NotificationsPage";
 import ChatPage from "./pages/ChatPage";
+import ReviewFormPage from "./pages/ReviewFormPage";
 import { mockData } from "./data/mockData";
 
 import "./styles/base.css";
 
-// Context para el estado global de la aplicación
 const AppContext = createContext();
 
 export const useApp = () => {
@@ -34,6 +34,7 @@ function App() {
   const [selectedService, setSelectedService] = useState(null);
   const [selectedProfessionalForChat, setSelectedProfessionalForChat] =
     useState(null);
+  const [bookingToReview, setBookingToReview] = useState(null);
   const [professionals, setProfessionals] = useState([]);
   const [services, setServices] = useState([]);
   const [reviews, setReviews] = useState([]);
@@ -50,7 +51,6 @@ function App() {
   });
 
   useEffect(() => {
-    // Simular carga inicial de datos
     setTimeout(() => {
       setProfessionals(mockData.professionals);
       setServices(mockData.services);
@@ -59,7 +59,6 @@ function App() {
       setFavorites(mockData.favorites);
       setNotifications(mockData.notifications);
 
-      // Verificar si hay usuario logueado en localStorage
       const savedUser = localStorage.getItem("beautyAtHomeUser");
       if (savedUser) {
         setUser(JSON.parse(savedUser));
@@ -70,8 +69,12 @@ function App() {
   }, []);
 
   const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("beautyAtHomeUser", JSON.stringify(userData));
+    const updatedUserData = {
+      ...userData,
+      avatar: "/assets/profile-photos/maria-garcia.jpeg", // Ruta específica para María García
+    };
+    setUser(updatedUserData);
+    localStorage.setItem("beautyAtHomeUser", JSON.stringify(updatedUserData));
     setCurrentView("home");
   };
 
@@ -85,7 +88,7 @@ function App() {
     const newUser = {
       ...userData,
       id: Date.now(),
-      avatar: "/placeholder.svg?height=100&width=100",
+      avatar: "/assets/profile-photos/maria-garcia.jpeg",
       joinDate: new Date().toISOString(),
       bookingsCount: 0,
       favoriteCount: 0,
@@ -121,10 +124,10 @@ function App() {
       ...bookingData,
       status: "confirmed",
       createdAt: new Date().toISOString(),
+      reviewed: false, // Inicializar como no reseñada
     };
     setBookings((prev) => [...prev, newBooking]);
 
-    // Agregar notificación
     const notification = {
       id: Date.now() + 1,
       type: "booking_confirmed",
@@ -173,7 +176,6 @@ function App() {
       )
     );
 
-    // Agregar notificación
     const notification = {
       id: Date.now(),
       type: "booking_cancelled",
@@ -192,9 +194,47 @@ function App() {
           ? { ...notification, read: true }
           : notification
       );
-      console.log("Notifications updated:", updatedNotifications); // Log para depuración
+      console.log("Notifications updated:", updatedNotifications);
       return updatedNotifications;
     });
+  };
+
+  const addReview = (reviewData) => {
+    const newReview = {
+      id: Date.now(),
+      ...reviewData,
+      date: new Date().toISOString().split("T")[0],
+      clientInitials: user?.name
+        ? user.name
+            .split(" ")
+            .map((n) => n[0])
+            .join(".")
+        : "Anónimo",
+      servicePhotos: [],
+    };
+    setReviews((prev) => [...prev, newReview]);
+
+    // Marcar la reserva como reseñada
+    setBookings((prev) =>
+      prev.map((booking) =>
+        booking.id === reviewData.bookingId
+          ? { ...booking, reviewed: true }
+          : booking
+      )
+    );
+
+    const notification = {
+      id: Date.now() + 1,
+      type: "new_review",
+      title: "¡Gracias por tu reseña!",
+      message: `Tu reseña para ${reviewData.professionalName} ha sido publicada.`,
+      date: new Date().toISOString(),
+      read: false,
+    };
+    setNotifications((prev) => [notification, ...prev]);
+
+    setCurrentView("my-bookings");
+    setBookingToReview(null);
   };
 
   const getReviewsForProfessional = (professionalId) => {
@@ -211,6 +251,11 @@ function App() {
       .filter((fav) => fav.userId === user.id)
       .map((fav) => fav.professionalId);
     return professionals.filter((prof) => userFavoriteIds.includes(prof.id));
+  };
+
+  const getUserReviews = () => {
+    if (!user) return [];
+    return reviews.filter((review) => review.userId === user.id);
   };
 
   const getUserNotifications = () => {
@@ -269,6 +314,8 @@ function App() {
     selectedProfessional,
     selectedService,
     selectedProfessionalForChat,
+    bookingToReview,
+    setBookingToReview,
     handleViewProfessional,
     handleBookService,
     handleContactProfessional,
@@ -276,9 +323,11 @@ function App() {
     cancelBooking,
     toggleFavorite,
     markNotificationAsRead,
+    addReview,
     getReviewsForProfessional,
     getUserBookings,
     getUserFavorites,
+    getUserReviews, // Añadido
     getUserNotifications,
     getUnreadNotificationsCount,
     isProfessionalFavorite,
@@ -320,6 +369,7 @@ function App() {
           {currentView === "favorites" && <FavoritesPage />}
           {currentView === "notifications" && <NotificationsPage />}
           {currentView === "chat" && <ChatPage />}
+          {currentView === "review-form" && <ReviewFormPage />}
         </main>
       </div>
     </AppContext.Provider>

@@ -1,4 +1,5 @@
 "use client";
+
 import "../styles/components/star-rating.css";
 
 function StarRating({
@@ -12,21 +13,22 @@ function StarRating({
   const hasHalfStar = rating % 1 !== 0;
 
   for (let i = 0; i < 5; i++) {
-    let starClass = "star empty";
+    let starEmoji = "☆"; // Estrella vacía
     if (i < fullStars) {
-      starClass = "star filled";
+      starEmoji = "⭐"; // Estrella llena
     } else if (i === fullStars && hasHalfStar) {
-      starClass = "star half";
+      starEmoji = "🌟"; // Estrella media
     }
 
     stars.push(
       <button
         key={i}
-        className={`${starClass} ${size} ${interactive ? "interactive" : ""}`}
+        className={`star ${size} ${interactive ? "interactive" : ""}`}
         onClick={() => interactive && onRatingChange && onRatingChange(i + 1)}
         disabled={!interactive}
+        aria-label={`${i + 1} star${i + 1 === 1 ? "" : "s"}`}
       >
-        <span className="star-icon">⭐</span>
+        <span className="star-icon">{starEmoji}</span>
       </button>
     );
   }

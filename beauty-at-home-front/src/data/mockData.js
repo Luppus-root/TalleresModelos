@@ -3,7 +3,7 @@ export const mockData = {
     {
       id: 1,
       name: "Isabella Martínez",
-      photo: "/placeholder.svg?height=300&width=300",
+      photo: "/assets/profile-photos/isabella-martinez.jpeg",
       experience:
         "Estilista profesional con más de 10 años de experiencia internacional. Especializada en técnicas de coloración avanzada y cortes de vanguardia. Certificada por L'Oréal Professional Academy y Wella Professionals.",
       rating: 4.9,
@@ -16,7 +16,7 @@ export const mockData = {
     {
       id: 2,
       name: "Santiago Rodríguez",
-      photo: "/placeholder.svg?height=300&width=300",
+      photo: "/assets/profile-photos/santiago-rodriguez.jpeg",
       experience:
         "Master Barber con formación en técnicas clásicas y modernas. Especialista en cortes masculinos de precisión y cuidado de barba. 8 años perfeccionando el arte de la barbería tradicional.",
       rating: 4.8,
@@ -29,7 +29,7 @@ export const mockData = {
     {
       id: 3,
       name: "Valentina Herrera",
-      photo: "/placeholder.svg?height=300&width=300",
+      photo: "/assets/profile-photos/valentina-herrera.jpeg",
       experience:
         "Nail Artist reconocida internacionalmente. Especialista en nail art de alta gama y técnicas de extensión. Embajadora oficial de OPI y creadora de tendencias en redes sociales.",
       rating: 4.95,
@@ -42,7 +42,7 @@ export const mockData = {
     {
       id: 4,
       name: "Camila Torres",
-      photo: "/placeholder.svg?height=300&width=300",
+      photo: "/assets/profile-photos/camila-torres.jpeg",
       experience:
         "Makeup Artist profesional con experiencia en moda, televisión y eventos especiales. Especializada en maquillaje de novia y técnicas de contouring avanzado.",
       rating: 4.7,
@@ -234,8 +234,9 @@ export const mockData = {
       time: "14:00",
       address: "Calle 85 #15-20, Chapinero",
       notes: "Prefiero corte en capas",
-      status: "confirmed",
+      status: "completed", // Cambiado a 'completed'
       createdAt: "2024-01-25T10:30:00Z",
+      reviewed: false, // Cambiado a 'false' para que aparezca la opción de reseña
     },
     {
       id: 2,
@@ -252,6 +253,7 @@ export const mockData = {
       notes: "",
       status: "completed",
       createdAt: "2024-01-20T15:45:00Z",
+      reviewed: true,
     },
   ],
   favorites: [

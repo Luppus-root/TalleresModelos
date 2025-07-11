@@ -2,11 +2,20 @@
 
 import { useState } from "react";
 import { useApp } from "../App";
+import ReviewCard from "../components/ReviewCard";
 import "../styles/pages/profile.css";
 import "../styles/pages/auth.css";
+import "../styles/components/review-card.css";
 
 function ProfilePage() {
-  const { user, setCurrentView, getUserBookings, getUserFavorites } = useApp();
+  const {
+    user,
+    setCurrentView,
+    getUserBookings,
+    getUserFavorites,
+    getUserReviews,
+    services,
+  } = useApp(); // Añadir getUserReviews y services
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user?.name || "",
@@ -34,6 +43,7 @@ function ProfilePage() {
 
   const userBookings = getUserBookings();
   const userFavorites = getUserFavorites();
+  const userReviews = getUserReviews(); // Obtener las reseñas del usuario
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,8 +84,9 @@ function ProfilePage() {
                   <span className="stat-label">Favoritos</span>
                 </div>
                 <div className="stat-item">
-                  <span className="stat-number">4.8</span>
-                  <span className="stat-label">Rating</span>
+                  <span className="stat-number">{userReviews.length}</span>{" "}
+                  {/* Mostrar el número de reseñas */}
+                  <span className="stat-label">Reseñas</span>
                 </div>
               </div>
             </div>
@@ -150,6 +161,37 @@ function ProfilePage() {
                 </button>
               )}
             </div>
+          </div>
+
+          <div className="profile-section">
+            <h2>Mis Reseñas</h2> {/* Nueva sección para reseñas */}
+            {userReviews.length === 0 ? (
+              <div className="empty-state">
+                <div className="empty-state-icon">⭐</div>
+                <h3>Aún no has dejado reseñas</h3>
+                <p>¡Comparte tu experiencia con nuestros profesionales!</p>
+                <button
+                  className="empty-state-btn"
+                  onClick={() => setCurrentView("my-bookings")}
+                >
+                  <span className="btn-icon">📅</span>
+                  Ver Citas Completadas
+                </button>
+              </div>
+            ) : (
+              <div className="reviews-grid">
+                {" "}
+                {/* Reutilizar la clase reviews-grid */}
+                {userReviews.map((review, index) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    services={services}
+                    index={index}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="profile-section">

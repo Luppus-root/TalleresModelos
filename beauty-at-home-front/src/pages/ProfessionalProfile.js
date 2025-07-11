@@ -5,6 +5,7 @@ import { useApp } from "../App";
 import StarRating from "../components/StarRating";
 import ServiceCard from "../components/ServiceCard";
 import ReviewCard from "../components/ReviewCard";
+import "../styles/pages/professional-profile.css";
 
 function ProfessionalProfile() {
   const {
@@ -14,6 +15,7 @@ function ProfessionalProfile() {
     setCurrentView,
     toggleFavorite,
     isProfessionalFavorite,
+    handleContactProfessional,
   } = useApp();
   const [activeTab, setActiveTab] = useState("services");
 
@@ -43,6 +45,10 @@ function ProfessionalProfile() {
     toggleFavorite(selectedProfessional.id);
   };
 
+  const handleContactClick = () => {
+    handleContactProfessional(selectedProfessional);
+  };
+
   return (
     <div className="professional-profile">
       <button className="back-button" onClick={() => setCurrentView("home")}>
@@ -57,6 +63,7 @@ function ProfessionalProfile() {
               <img
                 src={selectedProfessional.photo || "/placeholder.svg"}
                 alt={selectedProfessional.name}
+                className="profile-photo"
               />
               <div className="status-indicator online"></div>
             </div>
@@ -105,7 +112,10 @@ function ProfessionalProfile() {
             </div>
 
             <div className="profile-actions">
-              <button className="action-btn primary large">
+              <button
+                className="action-btn primary large"
+                onClick={handleContactClick}
+              >
                 <span className="btn-icon">💬</span>
                 <span>Contactar</span>
               </button>

@@ -4,7 +4,13 @@ import { useApp } from "../App";
 import "../styles/pages/my-bookings.css";
 
 function MyBookingsPage() {
-  const { user, getUserBookings, setCurrentView, cancelBooking } = useApp();
+  const {
+    user,
+    getUserBookings,
+    setCurrentView,
+    cancelBooking,
+    setBookingToReview,
+  } = useApp();
 
   if (!user) {
     return (
@@ -34,6 +40,11 @@ function MyBookingsPage() {
   const cancelledBookings = userBookings.filter(
     (booking) => booking.status === "cancelled"
   );
+
+  const handleLeaveReview = (booking) => {
+    setBookingToReview(booking);
+    setCurrentView("review-form");
+  };
 
   return (
     <div className="bookings-page">
@@ -90,7 +101,11 @@ function MyBookingsPage() {
                 <h2 className="section-title">Citas Completadas</h2>
                 <div className="bookings-grid">
                   {pastBookings.map((booking) => (
-                    <BookingCard key={booking.id} booking={booking} />
+                    <BookingCard
+                      key={booking.id}
+                      booking={booking}
+                      onLeaveReview={handleLeaveReview}
+                    />
                   ))}
                 </div>
               </div>
@@ -113,7 +128,7 @@ function MyBookingsPage() {
   );
 }
 
-function BookingCard({ booking, onCancel }) {
+function BookingCard({ booking, onCancel, onLeaveReview }) {
   const getStatusColor = (status) => {
     switch (status) {
       case "confirmed":
@@ -192,12 +207,23 @@ function BookingCard({ booking, onCancel }) {
             </button>
           </>
         )}
-        {booking.status === "completed" && (
-          <button className="action-btn primary">
-            <span className="btn-icon">⭐</span>
-            Dejar Reseña
-          </button>
-        )}
+        {booking.status === "completed" &&
+          !booking.reviewed && ( // Mostrar si está completada y no reseñada
+            <button
+              className="action-btn primary"
+              onClick={() => onLeaveReview(booking)}
+            >
+              <span className="btn-icon">⭐</span>
+              Dejar Reseña
+            </button>
+          )}
+        {booking.status === "completed" &&
+          booking.reviewed && ( // Mostrar si ya está reseñada
+            <button className="action-btn secondary" disabled>
+              <span className="btn-icon">✅</span>
+              Reseña Enviada
+            </button>
+          )}
       </div>
     </div>
   );
