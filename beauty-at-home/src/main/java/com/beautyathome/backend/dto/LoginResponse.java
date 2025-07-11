@@ -9,7 +9,7 @@ import lombok.*;
 public class LoginResponse {
 
     private String token;
-    private String tipoUsuario; // CLIENTE, PROFESIONAL, ADMINISTRADOR
+    private String tipoUsuario;
     private Long usuarioId;
 }
 

@@ -27,5 +27,6 @@ public class Reseña {
     public void exportar() {
         // Placeholder para el patrón Visitor
     }
+
 }
 
