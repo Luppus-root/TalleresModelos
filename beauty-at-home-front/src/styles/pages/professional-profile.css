@@ -1,0 +1,236 @@
+/* Professional Profile */
+.professional-profile {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.back-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: var(--transition-medium);
+    overflow: hidden;
+}
+
+.back-button:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.profile-hero {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-content {
+    position: relative;
+    display: flex;
+    gap: 3rem;
+    padding: 3rem;
+    z-index: 2;
+}
+
+.profile-photo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.photo-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.status-indicator.online {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: #10b981;
+    border: 4px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+.sponsor-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--warning-gradient);
+    color: #8b4513;
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.sponsor-icon {
+    font-size: 1.5rem;
+}
+
+.sponsor-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.sponsor-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.sponsor-brand {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.profile-rating {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.rating-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.rating-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.profile-experience {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.profile-coverage h4 {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.coverage-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.coverage-tag {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-lg);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Profile Tabs */
+.profile-tabs {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tabs-container {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.tab-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition-medium);
+    position: relative;
+}
+
+.tab-button.active {
+    background: var(--primary-gradient);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.tab-icon {
+    font-size: 1.1rem;
+}
+
+.tab-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+}

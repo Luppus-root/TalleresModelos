@@ -1,0 +1,188 @@
+/* Booking Page Improvements */
+.booking-page {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.booking-container {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.booking-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-xl);
+}
+
+.booking-summary {
+    padding-right: 2rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.booking-summary h2,
+.booking-form-container h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.summary-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-card .professional-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.summary-card .professional-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-gradient);
+}
+
+.summary-card .professional-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.summary-card .rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.summary-card .service-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.summary-card .service-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.summary-card .service-details {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.summary-card .price {
+    font-size: 1.3rem;
+    font-weight: 800;
+    background: var(--success-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.summary-card .duration {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.booking-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.booking-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border: none;
+    background: var(--primary-gradient);
+    color: white;
+    border-radius: var(--radius-lg);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-medium);
+    margin-top: 1rem;
+}
+
+.booking-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.booking-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .booking-content {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .booking-summary {
+        padding-right: 0;
+        border-right: none;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .booking-content {
+        padding: 1rem;
+    }
+}
+
+/* Specific styles for booking form inputs */
+.booking-form .form-group .input-container input,
+.booking-form .form-group .input-container select,
+.booking-form .form-group .input-container textarea {
+    padding: 1rem;
+    /* Remove left padding for icon */
+    box-shadow: var(--shadow-sm);
+}
+
+.booking-form .form-group .input-container input:focus,
+.booking-form .form-group .input-container select:focus,
+.booking-form .form-group .input-container textarea:focus {
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), var(--shadow-md);
+}

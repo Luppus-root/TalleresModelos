@@ -1,0 +1,135 @@
+/* Reviews Tab */
+.reviews-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.no-reviews-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+.no-reviews h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.no-reviews p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: var(--transition-medium);
+    animation: reviewSlideIn 0.6s ease-out both;
+}
+
+@keyframes reviewSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.client-avatar {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.client-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.client-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.review-date {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.service-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: var(--radius-lg);
+    width: fit-content;
+}
+
+.service-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.review-comment {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+.review-photos {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-photo-container {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
